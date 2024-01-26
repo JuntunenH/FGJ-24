@@ -8,4 +8,5 @@ public partial class MeleeWeapon : BaseWeapon
     {
         base.Attack();
     }
+
 }

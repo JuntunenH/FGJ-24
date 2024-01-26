@@ -2,7 +2,7 @@ using Godot;
 using System;
 
 
-public partial class BaseWeapon : Area2D
+public partial class BaseWeapon : Node2D
 {
 	private int m_damage;
 	[Export]
@@ -15,6 +15,8 @@ public partial class BaseWeapon : Area2D
 	private float m_cooldownTimer;
 	[Export]
 	public float CooldownTimer { get {return m_cooldownTimer;} protected set {m_cooldownTimer = value;} }
+
+	public bool isActive = false;
 	public virtual void Attack()
 	{
 		ResetTimer();
@@ -30,6 +32,8 @@ public partial class BaseWeapon : Area2D
     }
     public override void _Process(double delta)
     {
+		if(!isActive) return;
+
 		if(m_cooldownTimer >= 0) {
 			m_cooldownTimer -= (float)delta;
 			return;
