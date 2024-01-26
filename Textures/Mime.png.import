@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cgvcxpr54kilu"
-path="res://.godot/imported/Clown.png-d1523f5dab88f99a5b4496509d35c619.ctex"
+path="res://.godot/imported/Mime.png-0c306af8259478c940e2f696dd431504.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Clown.png"
-dest_files=["res://.godot/imported/Clown.png-d1523f5dab88f99a5b4496509d35c619.ctex"]
+source_file="res://Textures/Mime.png"
+dest_files=["res://.godot/imported/Mime.png-0c306af8259478c940e2f696dd431504.ctex"]
 
 [params]
 
