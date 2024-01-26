@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Diagnostics;
 public partial class EnemyController : CharacterBody2D
 {
 	// Enemy stats
@@ -13,24 +14,29 @@ public partial class EnemyController : CharacterBody2D
     public uint Damage { get; set; } = 5;
 
     [Export]
-    public float MovementSpeed = 4;
+    public float MovementSpeed = 40;
 
     [Export]
     public int Experience { get; private set; } = 1;
 
     private Timer _attackCooldown;
-    private GameManager _gameManager;
+    private CharacterController _player;
+    Sprite2D e_sprite;
 
     public override void _Ready()
     {
-        _gameManager = GetNode<GameManager>("/root/GameManager");
-        _attackCooldown = GetNode<Timer>("AttackCooldown");
-        // var hud = GetNode<Control>("../HUD");
-        // _lifebar = GD.Load<PackedScene>("res://Prefabs/UI/enemy_life_bar.tscn").Instantiate<ProgressBar>();
-        // _lifebar.MaxValue = Lifepoints;
-        // hud.AddChild(_lifebar);
+        _player = GetNode<CharacterController>("/root/World/PlayerCharacter");
+        // fetch player sprite
+        e_sprite = GetNode<Sprite2D>("Sprite2D");
     }
-
+    public override void _PhysicsProcess(double delta)
+    {
+        //base._PhysicsProcess(delta);
+        var playerPos = _player.GlobalPosition;
+        var direction = (playerPos - GlobalPosition).LimitLength();
+        Velocity = direction * MovementSpeed;
+        MoveAndSlide();
+    }
 
 
     // private void Attack()
