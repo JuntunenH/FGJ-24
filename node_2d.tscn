@@ -1,9 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://dpdl53clx0vui"]
+[gd_scene load_steps=3 format=3 uid="uid://dpdl53clx0vui"]
 
-[ext_resource type="Texture2D" uid="uid://btmryj05j0050" path="res://icon.svg" id="1_dmph1"]
+[ext_resource type="Texture2D" uid="uid://csvel1lclxe8m" path="res://Textures/Grass.jpg" id="1_x7agp"]
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="ImageTexture" id="ImageTexture_q65nk"]
 
-[node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(214, 366)
-texture = ExtResource("1_dmph1")
+[node name="World" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("ImageTexture_q65nk")
+
+[node name="Grass" type="Sprite2D" parent="."]
+texture_filter = 2
+texture_repeat = 2
+position = Vector2(138, -134)
+texture = ExtResource("1_x7agp")
+region_enabled = true
+region_rect = Rect2(-4000, -4000, 4000, 4000)
