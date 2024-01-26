@@ -14,6 +14,7 @@ public partial class CharacterController : CharacterBody2D
 
 	private void GetMoveInput()
 	{
+		if(gameOver) return;
 		// Get inputs to vector
 		Vector2 moveVector = Input.GetVector("MoveLeft", "MoveRight", "MoveUp", "MoveDown");
 
@@ -30,8 +31,7 @@ public partial class CharacterController : CharacterBody2D
 
 	private void Die()
 	{
-		if(!gameOver) { return; }
-		Velocity = Vector2.Zero;
+		gameOver = true;
 		m_sprite.FlipV = true;
 	}
     public override void _Ready()
@@ -43,7 +43,6 @@ public partial class CharacterController : CharacterBody2D
     {
 		GetMoveInput();
 		FlipSprite();
-		Die();
 		MoveAndSlide();
     }
 }

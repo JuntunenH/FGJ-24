@@ -8,6 +8,7 @@ size = Vector2(54, 62)
 
 [node name="PlayerCharacter" type="CharacterBody2D" groups=["Player"]]
 z_index = 100
+motion_mode = 1
 script = ExtResource("1_rhx2k")
 MoveSpeed = 250.0
 

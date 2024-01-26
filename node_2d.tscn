@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dpdl53clx0vui"]
+[gd_scene load_steps=5 format=3 uid="uid://dpdl53clx0vui"]
 
 [ext_resource type="Texture2D" uid="uid://csvel1lclxe8m" path="res://Textures/Grass.jpg" id="1_x7agp"]
 [ext_resource type="PackedScene" uid="uid://b37hfbcace451" path="res://Prefabs/Player.tscn" id="2_72fay"]
 [ext_resource type="PackedScene" uid="uid://c1ahkd45fxpl4" path="res://Prefabs/GameCamera.tscn" id="3_41573"]
+[ext_resource type="PackedScene" uid="uid://d0o117gplgsah" path="res://Prefabs/EnemyMeleeMime.tscn" id="4_j7fr4"]
 
 [node name="World" type="Node2D"]
 
@@ -16,9 +17,14 @@ region_rect = Rect2(-4000, -4000, 4000, 4000)
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("2_72fay")]
 position = Vector2(439, 245)
+slide_on_ceiling = false
 
 [node name="Camera2D" parent="." node_paths=PackedStringArray("m_cameraTarget") instance=ExtResource("3_41573")]
 position = Vector2(270, 213)
 position_smoothing_speed = 10.0
 m_cameraTarget = NodePath("../PlayerCharacter")
 m_offsetVector = Vector2(10, 0)
+
+[node name="Enemy" parent="." instance=ExtResource("4_j7fr4")]
+position = Vector2(24, 185)
+MovementSpeed = 80.0
