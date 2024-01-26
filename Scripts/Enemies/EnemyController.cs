@@ -1,6 +1,12 @@
 using Godot;
 using System;
 using System.Diagnostics;
+
+public enum EnemyVariant
+{
+    Melee = 1,
+    Range = 2
+}
 public partial class EnemyController : CharacterBody2D
 {
 	// Enemy stats
@@ -8,10 +14,10 @@ public partial class EnemyController : CharacterBody2D
 	//public const uint MaxLifepoints = 100; 
 
  	[Export]
-    public int Lifepoints { get; set; } = 100;//(int)MaxLifepoints;
+    public int Hitpoints { get; set; } = 100;
 
     [Export]
-    public uint Damage { get; set; } = 5;
+    public int Damage { get; set; } = 5;
 
     [Export]
     public float MovementSpeed = 40;
