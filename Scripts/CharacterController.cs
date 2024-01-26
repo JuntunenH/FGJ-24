@@ -6,7 +6,7 @@ public partial class CharacterController : CharacterBody2D
 {
 
 	[ExportCategory("Player Variables")]
-
+	[Export] private bool gameOver = false;
 	private Sprite2D m_sprite;
 	private float m_moveSpeed;
 	[Export]
@@ -25,9 +25,15 @@ public partial class CharacterController : CharacterBody2D
 	{
 		// handle sprite orientation
 		if( Velocity.X >= 0 && m_sprite.FlipH != true ) { m_sprite.FlipH = true; }
-		if( Velocity.Y < 0 && m_sprite.FlipH != false ) { m_sprite.FlipH = false; }
+		if( Velocity.X < 0 && m_sprite.FlipH != false ) { m_sprite.FlipH = false; }
 	}
 
+	private void Die()
+	{
+		if(!gameOver) { return; }
+		Velocity = Vector2.Zero;
+		m_sprite.FlipV = true;
+	}
     public override void _Ready()
     {
 		// fetch player sprite
@@ -37,6 +43,7 @@ public partial class CharacterController : CharacterBody2D
     {
 		GetMoveInput();
 		FlipSprite();
+		Die();
 		MoveAndSlide();
     }
 }
