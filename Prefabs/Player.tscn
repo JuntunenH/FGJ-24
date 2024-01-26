@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://b37hfbcace451"]
+
+[ext_resource type="Script" path="res://Scripts/CharacterController.cs" id="1_rhx2k"]
+[ext_resource type="Texture2D" uid="uid://w6syvbgsido8" path="res://Textures/ClownCharacter.png" id="2_4a33e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_id03m"]
+size = Vector2(54, 62)
+
+[node name="PlayerCharacter" type="CharacterBody2D"]
+script = ExtResource("1_rhx2k")
+MoveSpeed = 250.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_4a33e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -1)
+shape = SubResource("RectangleShape2D_id03m")

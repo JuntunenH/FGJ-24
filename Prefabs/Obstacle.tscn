@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://t8sv17k3an7t"]
 
-[ext_resource type="Texture2D" uid="uid://btmryj05j0050" path="res://icon.svg" id="1_mlbc3"]
+[ext_resource type="Texture2D" uid="uid://btmryj05j0050" path="res://icon.svg" id="1_cjqnt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ebqf"]
 size = Vector2(129, 130)
@@ -8,7 +8,7 @@ size = Vector2(129, 130)
 [node name="Obstacle" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_mlbc3")
+texture = ExtResource("1_cjqnt")
 
 [node name="Area2D" type="Area2D" parent="."]
 
