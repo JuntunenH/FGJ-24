@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dpdl53clx0vui"]
+[gd_scene load_steps=4 format=3 uid="uid://dpdl53clx0vui"]
 
 [ext_resource type="Texture2D" uid="uid://csvel1lclxe8m" path="res://Textures/Grass.jpg" id="1_x7agp"]
+[ext_resource type="PackedScene" uid="uid://c5x528ffxgsqp" path="res://Prefabs/PlayerCharacter.tscn" id="2_03jr1"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_q65nk"]
 
@@ -16,3 +17,6 @@ position = Vector2(542, -1041)
 texture = ExtResource("1_x7agp")
 region_enabled = true
 region_rect = Rect2(-4000, -4000, 4000, 4000)
+
+[node name="world" parent="." instance=ExtResource("2_03jr1")]
+position = Vector2(287, 175)
