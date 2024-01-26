@@ -11,7 +11,7 @@
 texture = SubResource("ImageTexture_q65nk")
 
 [node name="Grass" type="Sprite2D" parent="."]
-texture_filter = 2
+texture_filter = 6
 texture_repeat = 2
 position = Vector2(542, -1041)
 texture = ExtResource("1_x7agp")
