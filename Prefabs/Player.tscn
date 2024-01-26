@@ -6,7 +6,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_id03m"]
 size = Vector2(54, 62)
 
-[node name="PlayerCharacter" type="CharacterBody2D"]
+[node name="PlayerCharacter" type="CharacterBody2D" groups=["Player"]]
+z_index = 100
 script = ExtResource("1_rhx2k")
 MoveSpeed = 250.0
 

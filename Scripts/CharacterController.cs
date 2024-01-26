@@ -25,7 +25,7 @@ public partial class CharacterController : CharacterBody2D
 	{
 		// handle sprite orientation
 		if( Velocity.X >= 0 && m_sprite.FlipH != true ) { m_sprite.FlipH = true; }
-		if( Velocity.Y < 0 && m_sprite.FlipH != false ) { m_sprite.FlipH = false; }
+		if( Velocity.X < 0 && m_sprite.FlipH != false ) { m_sprite.FlipH = false; }
 	}
 
     public override void _Ready()
