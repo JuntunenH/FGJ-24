@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://40h6upkikl25"]
+
+[ext_resource type="PackedScene" uid="uid://dwvch0r48yv8d" path="res://Prefabs/UI/BaseShopButton.tscn" id="1_0b105"]
+
+[node name="Shop" type="Node2D"]
+
+[node name="MovSpeedMultip" parent="." instance=ExtResource("1_0b105")]
+offset_left = 0.0
+offset_right = 128.0
+_buttonText = "Movement speed"
+_buttonInfo = "Add movement speed +20%"
+_buttonColor = Color(0.00392157, 0.533333, 0.368627, 1)
+
+[node name="AttackSpeedMultip" parent="." instance=ExtResource("1_0b105")]
+offset_left = 128.0
+offset_right = 256.0
+_buttonText = "Attack speed"
+_buttonInfo = "Add attack speed +20%"
+_valueMultp = 0.8
+
+[node name="AttackSizeMultip" parent="." instance=ExtResource("1_0b105")]
+offset_left = 256.0
+offset_right = 384.0
+_buttonText = "Attack size"
+_buttonInfo = "Add attack size +20%"
+
+[node name="InfoText" type="TextEdit" parent="."]
+offset_left = 4.0
+offset_top = 136.0
+offset_right = 385.0
+offset_bottom = 239.0
+placeholder_text = "Skill info will be here"
+wrap_mode = 1

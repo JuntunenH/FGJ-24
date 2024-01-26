@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://dwvch0r48yv8d"]
+
+[ext_resource type="Texture2D" uid="uid://bcigjkcs0747y" path="res://Textures/UI/button64x64.png" id="1_4avnu"]
+[ext_resource type="Script" path="res://Scripts/UI/BaseShopButton.cs" id="2_2y2kq"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vpo2k"]
+texture = ExtResource("1_4avnu")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w02mo"]
+texture = ExtResource("1_4avnu")
+modulate_color = Color(0.443137, 0.443137, 0.443137, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v7o7d"]
+texture = ExtResource("1_4avnu")
+modulate_color = Color(0.963514, 0.605935, 0.436412, 1)
+
+[node name="BaseShopButton" type="Button"]
+offset_left = 1.0
+offset_right = 129.0
+offset_bottom = 128.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_vpo2k")
+theme_override_styles/hover = SubResource("StyleBoxTexture_w02mo")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_v7o7d")
+script = ExtResource("2_2y2kq")
+
+[node name="ButtonText" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "(InsertText)"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[connection signal="mouse_entered" from="." to="." method="SendInfo"]
