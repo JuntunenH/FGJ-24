@@ -15,6 +15,19 @@ public partial class Projectile : BaseWeapon
 
 	public void _onLifeTimeout()
 	{
+		DisableSelf();
+	}
+
+	public void _onBodyEntered(Node2D body)
+	{
+		if(body.IsInGroup("Enemy")){
+			GD.Print(body.Name);
+			DisableSelf();
+		}
+	}
+
+	private void DisableSelf()
+	{
 		SetProcess(false);
 		SetPhysicsProcess(false);
 		SetProcessInput(false);

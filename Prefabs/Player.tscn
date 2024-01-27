@@ -38,5 +38,5 @@ hitDirection = NodePath("../DirectionArrow")
 [node name="ProjectileWeapon" parent="." node_paths=PackedStringArray("aimDirection") instance=ExtResource("6_7mwhc")]
 WeaponProjectile = ExtResource("7_2dnjc")
 aimDirection = NodePath("../DirectionArrow")
-ProjectileSpeed = 100.0
+ProjectileSpeed = 500.0
 Cooldown = 2.0
