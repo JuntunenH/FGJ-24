@@ -6,12 +6,22 @@
 texture = ExtResource("1_nri8w")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-11, -19.5, 13.5, -20, 32, 4, 32, 13, 8, 32, -3, 32, -32, 20.5, -32, 14)
 1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
 0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
 1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_wym6q"]
 tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 2
 sources/0 = SubResource("TileSetAtlasSource_kt7sk")
 
 [node name="TileMap" type="TileMap"]
