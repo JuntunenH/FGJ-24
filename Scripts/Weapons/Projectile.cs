@@ -31,9 +31,10 @@ public partial class Projectile : BaseWeapon
 
 	private void DisableSelf()
 	{
-		SetProcess(false);
-		SetPhysicsProcess(false);
-		SetProcessInput(false);
-		Visible = false;
+		QueueFree();
+		//SetProcess(false);
+		//SetPhysicsProcess(false);
+		//SetProcessInput(false);
+		//Visible = false;
 	}
 }

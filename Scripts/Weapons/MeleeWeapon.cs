@@ -51,6 +51,14 @@ public partial class MeleeWeapon : BaseWeapon
         Visible = true;
         collider.Disabled = false;
     }
+    public void _onBodyEntered(Node2D body)
+    {
+        if(body.IsInGroup("Enemy"))
+        {
+            EnemyController enemy = (EnemyController)body;
+			enemy.TakeDamage(Damage);
+        }
+    }
     protected void AttackAnimation()
     {
     }

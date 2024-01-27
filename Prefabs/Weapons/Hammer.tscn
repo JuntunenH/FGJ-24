@@ -29,6 +29,7 @@ one_shot = true
 wait_time = 0.2
 one_shot = true
 
+[connection signal="body_entered" from="." to="." method="_onBodyEntered"]
 [connection signal="timeout" from="BackSwing" to="." method="_onTimerTimeout"]
 [connection signal="timeout" from="FadeTime" to="." method="_onFadeTimeTimeout"]
 [connection signal="timeout" from="WindUp" to="." method="_onWindUpTimeout"]
