@@ -3,12 +3,17 @@ using System;
 
 public partial class GameManager : Node2D
 {
-    // Called when the node enters the scene tree for the first time.
 
-    [Export] private PackedScene ClownCarScene { get; set; } = null;
-    [Export] private PackedScene ShopScene { get; set; } = null;
+    public float MovSpeedMultp { get; private set; } = 1.0f;
+    public float ATKSpeedMultp { get; private set; } = 1.0f;
+    public float ATKSizeMultp { get; private set; } = 1.0f;
 
-    //private PathFollow2D _carLeftSpawn { get; set; } = null;
+    
+    // PackedScenes
+    private PackedScene ClownCarScene { get; set; } = null;
+    private PackedScene ShopScene { get; set; } = null;
+
+    // PlayerCamera manager
     private Camera2D _camera2D { get; set; } = null;
 
 	public override void _Ready()
