@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b37hfbcace451"]
+[gd_scene load_steps=13 format=3 uid="uid://b37hfbcace451"]
 
 [ext_resource type="Script" path="res://Scripts/CharacterController.cs" id="1_rhx2k"]
 [ext_resource type="Texture2D" uid="uid://w6syvbgsido8" path="res://Textures/ClownCharacter.png" id="2_4a33e"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bmohkrincsiy" path="res://Prefabs/Weapons/projectile.tscn" id="7_2dnjc"]
 [ext_resource type="PackedScene" uid="uid://cnb62x1me6wu8" path="res://Prefabs/Weapons/whopee.tscn" id="8_p50si"]
 [ext_resource type="PackedScene" uid="uid://3jpk867hvwng" path="res://Prefabs/Weapons/BalloonShooter.tscn" id="9_3dehs"]
+[ext_resource type="PackedScene" uid="uid://c6co1s15kfsca" path="res://Prefabs/Weapons/waterBalloon.tscn" id="10_fcf8k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_id03m"]
 size = Vector2(54, 62)
@@ -47,6 +48,7 @@ WeaponProjectile = ExtResource("7_2dnjc")
 aimDirection = NodePath("../DirectionArrow")
 ProjectileSpeed = 500.0
 addRotation = true
+addedRotation = 90.0
 Damage = 15
 Cooldown = 2.0
 
@@ -61,6 +63,14 @@ aimDirection = NodePath("../DirectionArrow")
 ProjectileSpeed = 10.0
 Damage = 10
 Cooldown = 4.0
+
+[node name="SuperSoaker" parent="." node_paths=PackedStringArray("aimDirection") instance=ExtResource("6_7mwhc")]
+WeaponProjectile = ExtResource("10_fcf8k")
+aimDirection = NodePath("../DirectionArrow")
+ProjectileSpeed = 600.0
+addRotation = true
+Damage = 10
+Cooldown = 1.0
 
 [node name="Area2D" type="Area2D" parent="."]
 

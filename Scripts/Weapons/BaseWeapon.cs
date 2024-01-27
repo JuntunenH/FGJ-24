@@ -42,18 +42,18 @@ public partial class BaseWeapon : Node2D
 		Attack();
     }
 
-	public void IncreaseSize(float percentage)
+	public virtual void IncreaseSize(float percentage)
 	{
 		percentage += 1.0f;
 		Scale = new Vector2(Scale.X*percentage, Scale.Y*percentage);
 	}
 
-	public void IncreaseAttackSpeed(float percentage)
+	public virtual void IncreaseAttackSpeed(float percentage)
 	{
 		m_cooldown -= m_cooldown*percentage;
 	}
 
-	public void IncreaseDamage(float percentage)
+	public virtual void IncreaseDamage(float percentage)
 	{
 		float damageIncrease = Damage*percentage;
 		Damage += (int)Mathf.Floor(damageIncrease);

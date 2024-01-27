@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://c6co1s15kfsca"]
+
+[ext_resource type="Script" path="res://Scripts/Weapons/waterBalloon.cs" id="1_qldyl"]
+[ext_resource type="Texture2D" uid="uid://bff4lii27v6or" path="res://Textures/blue_water_balloon.png" id="2_bnctu"]
+[ext_resource type="Texture2D" uid="uid://db67kros41ljm" path="res://Textures/green_water_balloon.png" id="3_wnpgq"]
+[ext_resource type="Texture2D" uid="uid://dg5ph6lq3f23g" path="res://Textures/pink_water_balloon.png" id="4_ujs3t"]
+[ext_resource type="Texture2D" uid="uid://dan5vdmshif2c" path="res://Textures/red_water_balloon.png" id="5_klbcs"]
+[ext_resource type="Texture2D" uid="uid://bk1j3dmsghf40" path="res://Textures/yellow_water_balloon.png" id="6_lmt1n"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_250oj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_bnctu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_wnpgq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ujs3t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_klbcs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_lmt1n")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ix8ml"]
+size = Vector2(42.5, 30)
+
+[node name="Projectile" type="Area2D"]
+script = ExtResource("1_qldyl")
+
+[node name="SpriteArray" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_250oj")
+speed_scale = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4.25, -2)
+shape = SubResource("RectangleShape2D_ix8ml")
+
+[node name="LifeTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_onBodyEntered"]
+[connection signal="timeout" from="LifeTimer" to="." method="_onLifeTimeout"]

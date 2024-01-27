@@ -11,6 +11,8 @@ public partial class ProjectileWeapon : BaseWeapon
     private float ProjectileSpeed;
     [Export]
     private bool addRotation = false;
+    [Export]
+    private float addedRotation = 0f;
 
     public override void _Ready()
     {
@@ -29,7 +31,7 @@ public partial class ProjectileWeapon : BaseWeapon
         if(addRotation)
         {
             weaponInstance.Rotation = Position.AngleToPoint(attackDirection);
-            weaponInstance.Rotate(Mathf.DegToRad(90));
+            weaponInstance.Rotate(Mathf.DegToRad(addedRotation));
         }
 
         weaponInstance.Damage = Damage;
