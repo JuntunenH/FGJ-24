@@ -9,16 +9,16 @@ public partial class CharacterController : CharacterBody2D
 	[ExportCategory("Player Variables")]
 	[Export] private bool gameOver = false;
 	private Sprite2D m_sprite;
-	private float m_moveSpeed;
 	[Export]
-	public float MoveSpeed { get {return m_moveSpeed;} private set {m_moveSpeed = value; } }
+	public float MoveSpeed;
 	[Export]
-	public int Health{get; private set;} = 100;
+	public int Health = 100;
 	[Signal]
 	public delegate void GameOverEventHandler();
 	public int money = 0;
 	private Timer damageImmunity;
 	private bool is_Invulnerable = false;
+	private GameManager _gameManager;
 
 	public override void _Ready()
     {
@@ -26,6 +26,7 @@ public partial class CharacterController : CharacterBody2D
         m_sprite = GetNode<Sprite2D>("Sprite");
 		damageImmunity = GetNode<Timer>("ImmunityTimer");
 		damageImmunity.Timeout += OnTimerTimeout;
+		_gameManager = GetNode<GameManager>("/root/GameManager");
     }
 
 	private void GetMoveInput()
@@ -35,7 +36,7 @@ public partial class CharacterController : CharacterBody2D
 		Vector2 moveVector = Input.GetVector("MoveLeft", "MoveRight", "MoveUp", "MoveDown");
 
 		// Set player velocity
-		Velocity = moveVector * m_moveSpeed;
+		Velocity = moveVector * (MoveSpeed * _gameManager.MovSpeedMultp);
 	}
 
 	private void FlipSprite()
