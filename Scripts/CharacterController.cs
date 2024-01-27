@@ -36,7 +36,7 @@ public partial class CharacterController : CharacterBody2D
 		Vector2 moveVector = Input.GetVector("MoveLeft", "MoveRight", "MoveUp", "MoveDown");
 
 		// Set player velocity
-		Velocity = moveVector * (MoveSpeed * _gameManager.MovSpeedMultp);
+		Velocity = moveVector * (MoveSpeed * _gameManager.MoveSpeedMultp);
 	}
 
 	private void FlipSprite()

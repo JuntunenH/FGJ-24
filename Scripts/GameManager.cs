@@ -4,17 +4,17 @@ using System;
 public partial class GameManager : Node2D
 {
 
-    public float MovSpeedMultp { get; private set; } = 1.0f;
-    public float ATKSpeedMultp { get; private set; } = 1.0f;
-    public float ATKSizeMultp { get; private set; } = 1.0f;
+    public float MoveSpeedMultp { get; set; } = 1.0f;
+    public float ATKSpeedMultp { get; set; } = 1.0f;
+    public float ATKSizeMultp { get; set; } = 1.0f;
 
     
     // PackedScenes
-    private PackedScene ClownCarScene { get; set; } = null;
-    private PackedScene ShopScene { get; set; } = null;
+    private PackedScene ClownCarScene = null;
+    private PackedScene ShopScene = null;
 
     // PlayerCamera manager
-    private Camera2D _camera2D { get; set; } = null;
+    private Camera2D _camera2D = null;
 
 	public override void _Ready()
 	{
@@ -76,6 +76,5 @@ public partial class GameManager : Node2D
 
         GetTree().Paused = true;
     }
-
 
 }

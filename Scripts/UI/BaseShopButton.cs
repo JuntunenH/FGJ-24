@@ -55,31 +55,24 @@ public partial class BaseShopButton : Button
     }
 
     public void OnPressed() {
-        var player = (CharacterController)GetTree().CurrentScene.FindChild("PlayerCharacter");
-        if (player == null)
-        {
-            GD.PrintErr("ERROR BaseShopButton: Player not found!");
-            GetTree().Paused = false;
-            GetParent().QueueFree();
-            return;
-        }
-        else
-        {
-            UpdateSkill(player);
-            GetTree().Paused = false;
-            GetParent().QueueFree();
-        }
+        UpdateSkill();
+        GetTree().Paused = false;
+        GetParent().QueueFree();
     }
 
-    public void UpdateSkill(CharacterController player)
+    public void UpdateSkill()
     {
+        var gameManager = GetNode<GameManager>("/root/GameManager");
         switch (_skill)
         {
             case Skills.MovementSpeed:
+                gameManager.MoveSpeedMultp *= _valueMultp;
                 break;
             case Skills.AttackSpeed:
+                gameManager.ATKSpeedMultp *= _valueMultp;
                 break;
             case Skills.AttackSize:
+                gameManager.ATKSizeMultp *= _valueMultp;
                 break;
         }
     }
