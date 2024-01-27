@@ -12,7 +12,6 @@ public partial class DirectionArrow : Sprite2D
     private void SetPosition(float angleInRad)
     {
         Vector2 moveTarget = new Vector2(Mathf.Cos(angleInRad) * radius, Mathf.Sin(angleInRad) * radius);
-
         GlobalPosition = moveTarget + pivotTarget.Position;
     }
 
@@ -30,10 +29,13 @@ public partial class DirectionArrow : Sprite2D
     {
         if(@event is InputEventMouseMotion eventMouseMotion){
 			// get relative mouse position
-			Vector2 relativeMousePos = eventMouseMotion.GlobalPosition - pivotTarget.GlobalPosition;
+			
+			Vector2 relativeMousePos = pivotTarget.Position.DirectionTo(GetGlobalMousePosition());
 			float relativeAngle=relativeMousePos.Angle();
+
 			SetPosition(relativeAngle);
 			SetRotation();
+
 		}
     }
 }

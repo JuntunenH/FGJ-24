@@ -13,7 +13,7 @@
 [node name="PlayerCharacter" parent="." instance=ExtResource("3_ifu67")]
 position = Vector2(427, 276)
 
-[node name="ProjectileWeapon" parent="PlayerCharacter" instance=ExtResource("3_okgtw")]
+[node name="ProjectileWeapon2" parent="PlayerCharacter" instance=ExtResource("3_okgtw")]
 WeaponProjectile = ExtResource("4_3g5bm")
 Damage = 10
 Cooldown = 2.0
