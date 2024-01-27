@@ -12,8 +12,6 @@ public partial class GameManager : Node2D
 
 	public override void _Ready()
 	{
-		GD.Print("Game on!");
-
         _carLeftSpawn = GetNode<PathFollow2D>("LeftPath/LeftPathFollow");
         
         NewGame();
@@ -23,7 +21,7 @@ public partial class GameManager : Node2D
     {
         //TODO: Create new game logic..
         // Timers, signals etc.
-
+        GD.Print("Game started..");
         GetNode<Timer>("ClownCarTimer").Start();
     }
 
@@ -43,7 +41,6 @@ public partial class GameManager : Node2D
         //clownCar.LinearVelocity = new Vector2((float)GD.RandRange(200, 400), 0);
         clownCar.LinearVelocity = new Vector2(1000, 0); // This is for testing :D
     }
-
 
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.

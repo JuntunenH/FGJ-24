@@ -10,6 +10,8 @@ size = Vector2(256, 128)
 position = Vector2(128, 64)
 mass = 1500.0
 gravity_scale = 0.0
+max_contacts_reported = 100
+contact_monitor = true
 script = ExtResource("1_un2ii")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

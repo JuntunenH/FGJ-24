@@ -18,8 +18,8 @@ ClownCar = ExtResource("3_uou8p")
 position = Vector2(672, 240)
 
 [node name="ClownCarTimer" type="Timer" parent="."]
-wait_time = 4.0
-autostart = true
+wait_time = 5.0
+one_shot = true
 
 [node name="LeftPath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_yii6g")
