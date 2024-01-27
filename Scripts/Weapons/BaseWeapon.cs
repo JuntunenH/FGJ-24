@@ -13,7 +13,7 @@ public partial class BaseWeapon : Node2D
 	public float Cooldown { get {return m_cooldown;} protected set {m_cooldown = value;} }
 
 	private float m_cooldownTimer;
-	[Export]
+
 	public float CooldownTimer { get {return m_cooldownTimer;} protected set {m_cooldownTimer = value;} }
 
 	public bool isActive = false;

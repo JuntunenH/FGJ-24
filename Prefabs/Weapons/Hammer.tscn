@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgjw5d3tgvt0y"]
+
+[ext_resource type="Script" path="res://Scripts/Weapons/MeleeWeapon.cs" id="1_ohl4n"]
+[ext_resource type="Texture2D" uid="uid://b5d7wnaoow1t1" path="res://Textures/Hammer.png" id="1_s7i4q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u7g63"]
+size = Vector2(40, 26)
+
+[node name="Hammer" type="Area2D"]
+script = ExtResource("1_ohl4n")
+Cooldown = 2.0
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -32)
+texture = ExtResource("1_s7i4q")
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+position = Vector2(0, -48)
+shape = SubResource("RectangleShape2D_u7g63")
+
+[node name="BackSwing" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[node name="FadeTime" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="WindUp" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="timeout" from="BackSwing" to="." method="_onTimerTimeout"]
+[connection signal="timeout" from="FadeTime" to="." method="_onFadeTimeTimeout"]
+[connection signal="timeout" from="WindUp" to="." method="_onWindUpTimeout"]
