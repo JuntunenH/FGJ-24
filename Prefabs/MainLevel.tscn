@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://d14q6uth5s8rw"]
+
+[ext_resource type="Script" path="res://Scripts/GameManager.cs" id="1_hbrbf"]
+[ext_resource type="PackedScene" uid="uid://b37hfbcace451" path="res://Prefabs/Player.tscn" id="1_udyv0"]
+[ext_resource type="PackedScene" uid="uid://d3tfhof8ysxy2" path="res://Prefabs/ClownCar.tscn" id="3_uou8p"]
+
+[sub_resource type="Curve2D" id="Curve2D_yii6g"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 648)
+}
+point_count = 2
+
+[node name="MainLevel" type="Node2D"]
+script = ExtResource("1_hbrbf")
+ClownCar = ExtResource("3_uou8p")
+
+[node name="PlayerCharacter" parent="." instance=ExtResource("1_udyv0")]
+position = Vector2(672, 240)
+
+[node name="ClownCarTimer" type="Timer" parent="."]
+wait_time = 4.0
+autostart = true
+
+[node name="LeftPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_yii6g")
+
+[node name="LeftPathFollow" type="PathFollow2D" parent="LeftPath"]
+rotation = 1.5708
+
+[connection signal="timeout" from="ClownCarTimer" to="." method="SpawnClownCar"]
