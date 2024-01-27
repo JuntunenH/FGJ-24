@@ -25,11 +25,13 @@ public partial class EnemyController : CharacterBody2D
 
 	[Export]
 	public int Experience { get; private set; } = 1;
+	[Export]
+	public PackedScene Pickup;
 
 	private Timer _attackCooldown;
 	private CharacterController _player;
 	Sprite2D e_sprite;
-	
+
 	public override void _Ready()
 	{
 		_player = GetNode<CharacterController>("/root/World/PlayerCharacter");
@@ -55,10 +57,15 @@ public partial class EnemyController : CharacterBody2D
 		Hitpoints-= amount;
 		if(Hitpoints<=0)
 		{
-			QueueFree();
+			_death();
 		}
 	}
+	private void _death()
+	{
+		Node2D lootNode = (Node2D)Pickup.Instantiate();
+		lootNode.Position = GlobalPosition;
+		// Add the loot item to the scene
+		GetParent().AddChild(lootNode);
+		QueueFree();
+	}
 }
-
-
-
