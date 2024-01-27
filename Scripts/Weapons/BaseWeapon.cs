@@ -12,6 +12,7 @@ public partial class BaseWeapon : Node2D
 	[Export]
 	public float Cooldown { get {return m_cooldown;} set {m_cooldown = value;} }
 
+	[Export] protected int weaponLevel = 0;
 	private float m_cooldownTimer;
 
 	public float CooldownTimer { get {return m_cooldownTimer;} protected set {m_cooldownTimer = value;} }
@@ -56,5 +57,12 @@ public partial class BaseWeapon : Node2D
 	{
 		float damageIncrease = Damage*percentage;
 		Damage += (int)Mathf.Floor(damageIncrease);
+	}
+
+	public virtual void UpgradeWeapon()
+	{
+		if(!isActive) isActive = true;
+		GD.Print($"Weapon {Name} Upgraded");
+		weaponLevel += 1;
 	}
 }
