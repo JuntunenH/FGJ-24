@@ -11,6 +11,8 @@ public partial class CharacterController : CharacterBody2D
 	private float m_moveSpeed;
 	[Export]
 	public float MoveSpeed { get {return m_moveSpeed;} private set {m_moveSpeed = value; } }
+	[Export]
+	public int Health{get; private set;} = 100;
 
 	private void GetMoveInput()
 	{
@@ -45,4 +47,8 @@ public partial class CharacterController : CharacterBody2D
 		FlipSprite();
 		MoveAndSlide();
     }
+	public void TakeDamage(int damage){
+		Health -= damage;
+		GD.Print(Health);
+	}
 }
