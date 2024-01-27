@@ -46,9 +46,13 @@ public partial class EnemyController : CharacterBody2D
         {
             var collision = GetSlideCollision(1);
             GD.Print("I collided with ", ((Node)collision.GetCollider()).Name);
-            _player.TakeDamage(Damage);
+            //_player.TakeDamage(Damage);
             // Damagecooldown?
         }
+	}
+	public void TakeDamage(int amount){
+		GD.Print("Enemy take damage");
+		GD.Print(amount);
 	}
 }
 

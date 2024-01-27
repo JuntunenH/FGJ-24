@@ -6,11 +6,11 @@ public partial class BaseWeapon : Node2D
 {
 	private int m_damage;
 	[Export]
-	public int Damage { get {return m_damage;} protected set {m_damage = value;} }
+	public int Damage { get {return m_damage;} set {m_damage = value;} }
 
 	private float m_cooldown;
 	[Export]
-	public float Cooldown { get {return m_cooldown;} protected set {m_cooldown = value;} }
+	public float Cooldown { get {return m_cooldown;} set {m_cooldown = value;} }
 
 	private float m_cooldownTimer;
 

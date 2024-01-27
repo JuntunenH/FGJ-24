@@ -7,6 +7,7 @@ public partial class Projectile : BaseWeapon
 	private float m_projectileSpeed;
 	[Export] public float  ProjectileSpeed { get { return m_projectileSpeed; } set {m_projectileSpeed = value;}}
 
+
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
@@ -22,6 +23,8 @@ public partial class Projectile : BaseWeapon
 	{
 		if(body.IsInGroup("Enemy")){
 			GD.Print(body.Name);
+			EnemyController enemy = (EnemyController)body;
+			enemy.TakeDamage(Damage);
 			DisableSelf();
 		}
 	}

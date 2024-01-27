@@ -39,4 +39,5 @@ hitDirection = NodePath("../DirectionArrow")
 WeaponProjectile = ExtResource("7_2dnjc")
 aimDirection = NodePath("../DirectionArrow")
 ProjectileSpeed = 500.0
+Damage = 15
 Cooldown = 2.0

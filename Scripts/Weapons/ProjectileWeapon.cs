@@ -25,6 +25,7 @@ public partial class ProjectileWeapon : BaseWeapon
         weaponInstance.projectileDirection = attackDirection;
         weaponInstance.Rotation = Position.AngleToPoint(attackDirection);
         weaponInstance.Rotate(Mathf.DegToRad(90));
+        weaponInstance.Damage = Damage;
 		GetTree().Root.AddChild(weaponInstance);
     }
 }
