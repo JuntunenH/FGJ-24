@@ -9,6 +9,8 @@ public partial class ProjectileWeapon : BaseWeapon
     private DirectionArrow aimDirection;
     [Export]
     private float ProjectileSpeed;
+    [Export]
+    private bool addRotation = false;
 
     public override void _Ready()
     {
@@ -23,8 +25,13 @@ public partial class ProjectileWeapon : BaseWeapon
 		weaponInstance.ProjectileSpeed = ProjectileSpeed;
         Vector2 attackDirection = aimDirection.GetAttackDirection();
         weaponInstance.projectileDirection = attackDirection;
-        weaponInstance.Rotation = Position.AngleToPoint(attackDirection);
-        weaponInstance.Rotate(Mathf.DegToRad(90));
+
+        if(addRotation)
+        {
+            weaponInstance.Rotation = Position.AngleToPoint(attackDirection);
+            weaponInstance.Rotate(Mathf.DegToRad(90));
+        }
+
         weaponInstance.Damage = Damage;
 		GetTree().Root.AddChild(weaponInstance);
     }

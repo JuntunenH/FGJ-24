@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b37hfbcace451"]
+[gd_scene load_steps=10 format=3 uid="uid://b37hfbcace451"]
 
 [ext_resource type="Script" path="res://Scripts/CharacterController.cs" id="1_rhx2k"]
 [ext_resource type="Texture2D" uid="uid://w6syvbgsido8" path="res://Textures/ClownCharacter.png" id="2_4a33e"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bgjw5d3tgvt0y" path="res://Prefabs/Weapons/Hammer.tscn" id="5_cc7kt"]
 [ext_resource type="PackedScene" uid="uid://do5o167773g2w" path="res://Prefabs/Weapons/ProjectileWeapon.tscn" id="6_7mwhc"]
 [ext_resource type="PackedScene" uid="uid://bmohkrincsiy" path="res://Prefabs/Weapons/projectile.tscn" id="7_2dnjc"]
+[ext_resource type="PackedScene" uid="uid://cnb62x1me6wu8" path="res://Prefabs/Weapons/whopee.tscn" id="8_p50si"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_id03m"]
 size = Vector2(54, 62)
@@ -37,9 +38,16 @@ hitDirection = NodePath("../DirectionArrow")
 attackSpeed = 5.0
 Damage = 15
 
-[node name="ProjectileWeapon" parent="." node_paths=PackedStringArray("aimDirection") instance=ExtResource("6_7mwhc")]
+[node name="Creamer" parent="." node_paths=PackedStringArray("aimDirection") instance=ExtResource("6_7mwhc")]
 WeaponProjectile = ExtResource("7_2dnjc")
 aimDirection = NodePath("../DirectionArrow")
 ProjectileSpeed = 500.0
+addRotation = true
 Damage = 15
 Cooldown = 2.0
+
+[node name="Whoopee" parent="." node_paths=PackedStringArray("aimDirection") instance=ExtResource("6_7mwhc")]
+WeaponProjectile = ExtResource("8_p50si")
+aimDirection = NodePath("../DirectionArrow")
+Damage = 5
+Cooldown = 5.0
