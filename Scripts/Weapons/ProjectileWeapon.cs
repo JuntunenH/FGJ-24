@@ -10,6 +10,8 @@ public partial class ProjectileWeapon : BaseWeapon
     [Export]
     private float ProjectileSpeed;
     [Export]
+    private bool detachParent = true;
+    [Export]
     private bool addRotation = false;
     [Export]
     private float addedRotation = 0f;
@@ -35,6 +37,9 @@ public partial class ProjectileWeapon : BaseWeapon
         }
 
         weaponInstance.Damage = Damage;
-		GetTree().Root.AddChild(weaponInstance);
+        if(detachParent)
+		    GetTree().Root.AddChild(weaponInstance);
+        else
+            AddChild(weaponInstance);
     }
 }

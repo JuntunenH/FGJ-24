@@ -67,10 +67,11 @@ Cooldown = 4.0
 [node name="SuperSoaker" parent="." node_paths=PackedStringArray("aimDirection") instance=ExtResource("6_7mwhc")]
 WeaponProjectile = ExtResource("10_fcf8k")
 aimDirection = NodePath("../DirectionArrow")
-ProjectileSpeed = 600.0
-addRotation = true
+ProjectileSpeed = 5.0
+detachParent = false
+itemsToSpawn = 3
 Damage = 10
-Cooldown = 1.0
+Cooldown = 10.0
 
 [node name="Area2D" type="Area2D" parent="."]
 
