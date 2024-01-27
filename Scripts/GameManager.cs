@@ -63,10 +63,7 @@ public partial class GameManager : Node2D
 
     public void SpawnShopScene() {
         //GD.Print("Spawn shop");
-        var shop = ShopScene.Instantiate();
-        var root = GetTree().CurrentScene;
-
-
+        var shop = (Node2D)ShopScene.Instantiate();
         _camera2D.AddChild(shop);
 
         GetTree().Paused = true;

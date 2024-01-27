@@ -1,13 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://d14q6uth5s8rw"]
+[gd_scene load_steps=3 format=3 uid="uid://d14q6uth5s8rw"]
 
 [ext_resource type="PackedScene" uid="uid://b37hfbcace451" path="res://Prefabs/Player.tscn" id="1_udyv0"]
 [ext_resource type="PackedScene" path="res://Prefabs/GameCamera.tscn" id="2_gnfeu"]
-
-[sub_resource type="Curve2D" id="Curve2D_yii6g"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 648)
-}
-point_count = 2
 
 [node name="MainLevel" type="Node2D"]
 position = Vector2(8, 0)
@@ -18,12 +12,6 @@ position = Vector2(672, 240)
 [node name="ClownCarTimer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
-
-[node name="LeftPath" type="Path2D" parent="."]
-curve = SubResource("Curve2D_yii6g")
-
-[node name="LeftPathFollow" type="PathFollow2D" parent="LeftPath"]
-rotation = 1.5708
 
 [node name="Camera2D" parent="." node_paths=PackedStringArray("m_cameraTarget") instance=ExtResource("2_gnfeu")]
 zoom = Vector2(0.8, 0.8)
