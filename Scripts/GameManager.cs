@@ -5,10 +5,11 @@ public partial class GameManager : Node2D
 {
     // Called when the node enters the scene tree for the first time.
 
-    [Export] private PackedScene ClownCarScene { get; set; }
-    [Export] private PackedScene ShopScene { get; set; }
+    [Export] private PackedScene ClownCarScene { get; set; } = null;
+    [Export] private PackedScene ShopScene { get; set; } = null;
 
-    private PathFollow2D _carLeftSpawn = null;
+    //private PathFollow2D _carLeftSpawn { get; set; } = null;
+    private Camera2D _camera2D { get; set; } = null;
 
 	public override void _Ready()
 	{
@@ -26,7 +27,8 @@ public partial class GameManager : Node2D
 
         var root = GetTree().CurrentScene;
         if (root != null) { GD.Print($"Root Node name: {root.Name}"); }
-        _carLeftSpawn = root.GetNode<PathFollow2D>("LeftPath/LeftPathFollow");
+        //_carLeftSpawn = root.GetNode<PathFollow2D>("LeftPath/LeftPathFollow");
+        _camera2D = root.GetNode<Camera2D>("Camera2D");
 
         var clownCarTimer = root.GetNode<Timer>("ClownCarTimer");
         clownCarTimer.Timeout += SpawnClownCar;
@@ -39,12 +41,24 @@ public partial class GameManager : Node2D
 
     public void SpawnClownCar() {
         GD.Print("Spawning clown car!");
-        _carLeftSpawn.ProgressRatio = GD.Randf();
-        var clownCar = ClownCarScene.Instantiate<ClownCar>();
-        AddChild(clownCar);
-        clownCar.Position = _carLeftSpawn.Position;
 
-        clownCar.LinearVelocity = new Vector2((float)GD.RandRange(200, 400), 0);
+        // Spawn position on screen
+        var topLeft = _camera2D.GetScreenCenterPosition() - _camera2D.GetViewportRect().Size / 2; // topLeft
+        var bottomRight = _camera2D.GetScreenCenterPosition() + _camera2D.GetViewportRect().Size / 2; // bottomRight
+
+        var spawnPositions = new[] { topLeft, bottomRight };
+
+        //_carLeftSpawn.ProgressRatio = GD.Randf();
+        var clownCar = ClownCarScene.Instantiate<ClownCar>();
+
+        clownCar.Position = spawnPositions[GD.Randi() % spawnPositions.Length];
+
+        if (clownCar.Position == bottomRight)
+            clownCar.LinearVelocity = new Vector2((float)GD.RandRange(200, 400), 0) * -1;
+        else
+            clownCar.LinearVelocity = new Vector2((float)GD.RandRange(200, 400), 0);
+
+        AddChild(clownCar);
     }
 
     public void SpawnShopScene() {
@@ -52,9 +66,8 @@ public partial class GameManager : Node2D
         var shop = ShopScene.Instantiate();
         var root = GetTree().CurrentScene;
 
-        var camera = root.GetNode<Camera2D>("Camera2D");
 
-        camera.AddChild(shop);
+        _camera2D.AddChild(shop);
 
         GetTree().Paused = true;
     }
