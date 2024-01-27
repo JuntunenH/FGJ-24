@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dwvch0r48yv8d" path="res://Prefabs/UI/BaseShopButton.tscn" id="1_0b105"]
 
 [node name="Shop" type="Node2D"]
+process_mode = 2
 
 [node name="MovSpeedMultip" parent="." instance=ExtResource("1_0b105")]
 offset_left = 0.0

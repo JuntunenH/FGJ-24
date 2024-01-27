@@ -18,7 +18,8 @@ public partial class BaseShopButton : Button
     }
 
     public void SendInfo() {
-        var infoText = GetNode<TextEdit>("/root/Shop/InfoText");
+        var parentPath = GetParent().GetPath();
+        var infoText = GetNode<TextEdit>($"{parentPath}/InfoText");
         if (infoText == null)
         {
             GD.PrintErr("ERROR BaseShopButton: No info text found!");

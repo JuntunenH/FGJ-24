@@ -19,8 +19,7 @@ public partial class GameManager : Node2D
         NewGame();
     }
 
-    public void NewGame()
-    {
+    public void NewGame() {
         //TODO: Create new game logic..
         // Timers, signals etc.
         GD.Print("Game started..");
@@ -34,13 +33,11 @@ public partial class GameManager : Node2D
         clownCarTimer.Start();
     }
 
-    public void GameOver()
-    {
+    public void GameOver(){
         // TODO: Add necessary game over logic here
     }
 
-    public void SpawnClownCar()
-    {
+    public void SpawnClownCar() {
         GD.Print("Spawning clown car!");
         _carLeftSpawn.ProgressRatio = GD.Randf();
         var clownCar = ClownCarScene.Instantiate<ClownCar>();
@@ -50,11 +47,16 @@ public partial class GameManager : Node2D
         clownCar.LinearVelocity = new Vector2((float)GD.RandRange(200, 400), 0);
     }
 
-    public void SpawnShopScene()
-    {
-        GD.Print("Spawn shop");
-        //var shop = ShopScene.Instantiate();
-        //GetTree().Paused = true;
+    public void SpawnShopScene() {
+        //GD.Print("Spawn shop");
+        var shop = ShopScene.Instantiate();
+        var root = GetTree().CurrentScene;
+
+        var camera = root.GetNode<Camera2D>("Camera2D");
+
+        camera.AddChild(shop);
+
+        GetTree().Paused = true;
     }
 
 
