@@ -1,13 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://b0hg43b5hx6v1"]
+[gd_scene load_steps=4 format=3 uid="uid://b0hg43b5hx6v1"]
 
 [ext_resource type="Texture2D" uid="uid://cr3ftll65l74l" path="res://Textures/Banana.png" id="1_1ope1"]
+[ext_resource type="Script" path="res://Scripts/Pickups/money.cs" id="1_vdpjv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b7rav"]
+size = Vector2(44, 48)
 
-[node name="Money" type="Area2D"]
+[node name="Money" type="Area2D" groups=["Pickup"]]
+script = ExtResource("1_vdpjv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4, -1)
 shape = SubResource("RectangleShape2D_b7rav")
 
 [node name="Sprite2D" type="Sprite2D" parent="." groups=["Pickup"]]
 texture = ExtResource("1_1ope1")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

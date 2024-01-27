@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Data.SqlTypes;
 
 
 public partial class CharacterController : CharacterBody2D
@@ -15,6 +16,7 @@ public partial class CharacterController : CharacterBody2D
 	public int Health{get; private set;} = 100;
 	[Signal]
 	public delegate void GameOverEventHandler();
+	public int money = 0;
 	private Timer damageImmunity;
 	private bool is_Invulnerable = false;
 
