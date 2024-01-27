@@ -4,6 +4,7 @@
 
 [node name="Shop" type="Node2D"]
 process_mode = 2
+z_index = 101
 
 [node name="MovSpeedMultip" parent="." instance=ExtResource("1_0b105")]
 offset_left = 0.0

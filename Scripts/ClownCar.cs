@@ -20,8 +20,9 @@ public partial class ClownCar : RigidBody2D
     /// </summary>
     private void OnScreenExited2D()
     {
-        //GD.Print("Car destroyed");
-        GetNode<Timer>("/root/MainLevel/ClownCarTimer").Start();
+        GD.Print("Car destroyed");
+        var root = GetTree().CurrentScene;
+        root.GetNode<Timer>("ClownCarTimer").Start();
         QueueFree();
     }
 
@@ -33,10 +34,7 @@ public partial class ClownCar : RigidBody2D
             {
                 GD.Print("Colliding with player!");
                 //var player = collider.GetNode<CharacterBody2D>("PlayerCharacter");
-            }
-            else if (collider.Name == "Enemy")           // TODO: Fix enemy to use group name
-                GD.Print("Colliding with enemy!");
-                    
+            }                    
         }
 
     }
