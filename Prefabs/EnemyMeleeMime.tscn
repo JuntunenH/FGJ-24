@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Enemies/EnemyController.cs" id="1_c4o2u"]
 [ext_resource type="Texture2D" uid="uid://cgvcxpr54kilu" path="res://Textures/Mime.png" id="2_a0c7f"]
-[ext_resource type="PackedScene" uid="uid://b0hg43b5hx6v1" path="res://Prefabs/money.tscn" id="2_lth4o"]
+[ext_resource type="PackedScene" path="res://Prefabs/money.tscn" id="2_tedpi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lgvey"]
 size = Vector2(35, 59)
@@ -10,7 +10,7 @@ size = Vector2(35, 59)
 [node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
 collision_mask = 0
 script = ExtResource("1_c4o2u")
-Pickup = ExtResource("2_lth4o")
+Pickup = ExtResource("2_tedpi")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_a0c7f")

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://uwuxjqbkqvgy" path="res://Textures/creampie.png" id="2_4ftu0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ix8ml"]
-size = Vector2(61, 43)
+size = Vector2(61, 18)
 
 [node name="Projectile" type="Area2D"]
 script = ExtResource("1_h02ri")
@@ -13,7 +13,7 @@ script = ExtResource("1_h02ri")
 texture = ExtResource("2_4ftu0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.5, -1.5)
+position = Vector2(-1.5, -2)
 shape = SubResource("RectangleShape2D_ix8ml")
 
 [node name="LifeTimer" type="Timer" parent="."]

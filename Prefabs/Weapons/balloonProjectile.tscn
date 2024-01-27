@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3 uid="uid://cgcyefv1v7byl"]
+
+[ext_resource type="Script" path="res://Scripts/Weapons/balloonProjectile.cs" id="1_uqmx8"]
+[ext_resource type="Texture2D" uid="uid://c67peeo57md8l" path="res://Textures/AmogusBaloon.png" id="2_7w58c"]
+[ext_resource type="Texture2D" uid="uid://duulb64xltpy8" path="res://Textures/Balloon.png" id="3_hpbop"]
+[ext_resource type="Texture2D" uid="uid://cs2xjhartqa4f" path="res://Textures/Balloon_blue.png" id="4_rv521"]
+[ext_resource type="Texture2D" uid="uid://dvge4hdp26hvm" path="res://Textures/Balloon_green.png" id="5_lc0kw"]
+[ext_resource type="Texture2D" uid="uid://n8nh5ox3cv8y" path="res://Textures/Balloon_yellow.png" id="6_8leqs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ix8ml"]
+size = Vector2(20, 60)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ybi1w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7w58c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_hpbop")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_rv521")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_lc0kw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_8leqs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Projectile" type="Area2D"]
+script = ExtResource("1_uqmx8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_ix8ml")
+
+[node name="LifeTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="SpriteArray" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ybi1w")
+frame_progress = 0.420695
+speed_scale = 0.0
+
+[connection signal="body_entered" from="." to="." method="_onBodyEntered"]
+[connection signal="timeout" from="LifeTimer" to="." method="_onLifeTimeout"]
