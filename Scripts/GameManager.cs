@@ -5,14 +5,16 @@ public partial class GameManager : Node2D
 {
     // Called when the node enters the scene tree for the first time.
 
-    [Export]
-    private PackedScene ClownCar {  get; set; }
+    [Export] private PackedScene ClownCarScene { get; set; }
+    [Export] private PackedScene ShopScene { get; set; }
 
     private PathFollow2D _carLeftSpawn = null;
 
 	public override void _Ready()
 	{
-        _carLeftSpawn = GetNode<PathFollow2D>("LeftPath/LeftPathFollow");
+        GD.Print("GameManager created");
+        ClownCarScene = GD.Load<PackedScene>("res://Prefabs/ClownCar.tscn");
+        ShopScene = GD.Load<PackedScene>("res://Prefabs/UI/Shop.tscn");
         
         NewGame();
     }
@@ -22,7 +24,14 @@ public partial class GameManager : Node2D
         //TODO: Create new game logic..
         // Timers, signals etc.
         GD.Print("Game started..");
-        GetNode<Timer>("ClownCarTimer").Start();
+
+        var root = GetTree().CurrentScene;
+        if (root != null) { GD.Print($"Root Node name: {root.Name}"); }
+        _carLeftSpawn = root.GetNode<PathFollow2D>("LeftPath/LeftPathFollow");
+
+        var clownCarTimer = root.GetNode<Timer>("ClownCarTimer");
+        clownCarTimer.Timeout += SpawnClownCar;
+        clownCarTimer.Start();
     }
 
     public void GameOver()
@@ -34,18 +43,19 @@ public partial class GameManager : Node2D
     {
         GD.Print("Spawning clown car!");
         _carLeftSpawn.ProgressRatio = GD.Randf();
-        var clownCar = ClownCar.Instantiate<ClownCar>();
+        var clownCar = ClownCarScene.Instantiate<ClownCar>();
         AddChild(clownCar);
         clownCar.Position = _carLeftSpawn.Position;
 
         clownCar.LinearVelocity = new Vector2((float)GD.RandRange(200, 400), 0);
-        //clownCar.LinearVelocity = new Vector2(1000, 0); // This is for testing :D
     }
 
-
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
-    public override void _Process(double delta)
+    public void SpawnShopScene()
     {
-        
+        GD.Print("Spawn shop");
+        //var shop = ShopScene.Instantiate();
+        //GetTree().Paused = true;
     }
+
+
 }

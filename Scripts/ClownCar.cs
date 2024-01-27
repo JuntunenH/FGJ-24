@@ -34,10 +34,25 @@ public partial class ClownCar : RigidBody2D
                 GD.Print("Colliding with player!");
                 //var player = collider.GetNode<CharacterBody2D>("PlayerCharacter");
             }
-            else if(collider.Name == "Enemy")           // TODO: Fix enemy to use group name
-                GD.Print("Collided with enemy");
+            else if (collider.Name == "Enemy")           // TODO: Fix enemy to use group name
+                GD.Print("Colliding with enemy!");
+                    
         }
 
     }
+
+    public void _OnBodyEntered(Node body)
+    {
+        if (body.IsInGroup("Player"))
+        {
+            GD.Print("Player in the area");
+            if (!_shopUsed) {
+                var gameManager = GetNode<GameManager>("/root/GameManager");
+                gameManager.SpawnShopScene();                
+            }
+        }
+    }
+
+    
 
 }
