@@ -53,6 +53,9 @@ public partial class GameManager : Node2D
 
         clownCar.Position = spawnPositions[GD.Randi() % spawnPositions.Length];
 
+        // Randomize car sprite horizontaly
+        clownCar.GetNode<Sprite2D>("Sprite2D").FlipH = GD.Randi() % 2 == 0;
+
         if (clownCar.Position == bottomRight)
             clownCar.LinearVelocity = new Vector2((float)GD.RandRange(200, 400), 0) * -1;
         else

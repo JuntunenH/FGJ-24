@@ -8,21 +8,20 @@ process_mode = 2
 [node name="MovSpeedMultip" parent="." instance=ExtResource("1_0b105")]
 offset_left = 0.0
 offset_right = 128.0
-_buttonText = "Movement speed"
 _buttonInfo = "Add movement speed +20%"
 _buttonColor = Color(0.00392157, 0.533333, 0.368627, 1)
 
 [node name="AttackSpeedMultip" parent="." instance=ExtResource("1_0b105")]
 offset_left = 128.0
 offset_right = 256.0
-_buttonText = "Attack speed"
+_skill = 1
 _buttonInfo = "Add attack speed +20%"
 _valueMultp = 0.8
 
 [node name="AttackSizeMultip" parent="." instance=ExtResource("1_0b105")]
 offset_left = 256.0
 offset_right = 384.0
-_buttonText = "Attack size"
+_skill = 2
 _buttonInfo = "Add attack size +20%"
 
 [node name="InfoText" type="TextEdit" parent="."]

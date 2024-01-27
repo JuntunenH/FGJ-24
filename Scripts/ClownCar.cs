@@ -12,7 +12,7 @@ public partial class ClownCar : RigidBody2D
 
     public override void _Ready()
     {
-        GD.Print($"{Name} instantiated!");
+        //GD.Print($"{Name} instantiated!");
     }
 
     /// <summary>
@@ -41,7 +41,7 @@ public partial class ClownCar : RigidBody2D
 
     }
 
-    public void _OnBodyEntered(Node body)
+    private void _OnBodyEntered(Node2D body)
     {
         if (body.IsInGroup("Player"))
         {
@@ -51,8 +51,17 @@ public partial class ClownCar : RigidBody2D
                 gameManager.SpawnShopScene();                
             }
         }
+        else if (body.IsInGroup("Enemy"))
+        {
+            body.QueueFree();
+        }
     }
 
-    
-
+    private void _OnBodyExited(Node2D body)
+    {
+        if (body.IsInGroup("Player"))
+        {
+            _shopUsed = true;
+        }
+    }
 }

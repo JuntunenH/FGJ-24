@@ -41,4 +41,5 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[connection signal="mouse_entered" from="." to="." method="SendInfo"]
+[connection signal="mouse_entered" from="." to="." method="ButtonHoverInfo"]
+[connection signal="pressed" from="." to="." method="OnPressed"]
