@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Diagnostics;
+using System.Security.Cryptography.X509Certificates;
 
 public enum EnemyVariant
 {
@@ -14,7 +15,7 @@ public partial class EnemyController : CharacterBody2D
 	//public const uint MaxLifepoints = 100; 
 
  	[Export]
-	public int Hitpoints { get; set; } = 100;
+	public int Hitpoints { get; set; } = 10;
 
 	[Export]
 	public int Damage { get; set; } = 5;
@@ -28,12 +29,15 @@ public partial class EnemyController : CharacterBody2D
 	private Timer _attackCooldown;
 	private CharacterController _player;
 	Sprite2D e_sprite;
+	
+	public EnemyController _thisEnemy;
 
 	public override void _Ready()
 	{
 		_player = GetNode<CharacterController>("/root/World/PlayerCharacter");
 		// fetch player sprite
 		e_sprite = GetNode<Sprite2D>("Sprite2D");
+		var _thisEnemy = this;
 	}
 	public override void _PhysicsProcess(double delta)
 	{
@@ -53,6 +57,11 @@ public partial class EnemyController : CharacterBody2D
 	public void TakeDamage(int amount){
 		GD.Print("Enemy take damage");
 		GD.Print(amount);
+		Hitpoints-= amount;
+		if(Hitpoints<=0)
+		{
+			QueueFree();
+		}
 	}
 }
 
