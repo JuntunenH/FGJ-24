@@ -10,11 +10,9 @@ public partial class ClownCar : RigidBody2D
     /// </summary>
     private bool _shopUsed = false;
 
-    private Timer _spawnTimer = null;
-
     public override void _Ready()
     {
-        GD.Print($"{Name} instantiaded!");
+        GD.Print($"{Name} instantiated!");
     }
 
     /// <summary>

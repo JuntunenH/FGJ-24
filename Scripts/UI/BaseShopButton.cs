@@ -3,7 +3,7 @@ using System;
 
 public partial class BaseShopButton : Button
 {
-    [Export] private string _buttonText { get; set; } = "(InserButtonText)";
+    [Export] private string _buttonText { get; set; } = "(InsertButtonText)";
     [Export] private string _buttonInfo { get; set; } = "(InsertInfoText)";
  
     [Export] private float _valueMultp { get; set; } = 1.2f;

@@ -38,8 +38,8 @@ public partial class GameManager : Node2D
         AddChild(clownCar);
         clownCar.Position = _carLeftSpawn.Position;
 
-        //clownCar.LinearVelocity = new Vector2((float)GD.RandRange(200, 400), 0);
-        clownCar.LinearVelocity = new Vector2(1000, 0); // This is for testing :D
+        clownCar.LinearVelocity = new Vector2((float)GD.RandRange(200, 400), 0);
+        //clownCar.LinearVelocity = new Vector2(1000, 0); // This is for testing :D
     }
 
 
