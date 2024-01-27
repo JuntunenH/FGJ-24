@@ -62,6 +62,7 @@ public partial class EnemyController : CharacterBody2D
 	}
 	private void _death()
 	{
+		// This instantiate causes issues here
 		Node2D lootNode = (Node2D)Pickup.Instantiate();
 		lootNode.Position = GlobalPosition;
 		// Add the loot item to the scene

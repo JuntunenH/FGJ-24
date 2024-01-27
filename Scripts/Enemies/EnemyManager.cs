@@ -49,12 +49,6 @@ public partial class EnemyManager : Node
 
     private void SpawnEnemy(EnemyVariant enemyVariant)
     {
-        //var testScene = GD.Load<PackedScene>("res://Prefabs/EnemyMeleeMime.tscn");
-        //var instance = testScene.Instantiate<EnemyController>();
-        // testSpawn +=1;
-        // AddChild(instance);
-
-        // Correct code:
         var instance = _enemyPrefabs[enemyVariant].Instantiate<EnemyController>();
         instance.Position = GetRandomPosAroundPlayer(SpawnRange);
         spawnCount +=1;
@@ -64,8 +58,6 @@ public partial class EnemyManager : Node
         instance.MovementSpeed += instance.MovementSpeed * ((int)GameTime/20);
         instance.Position=GetRandomPosAroundPlayer(SpawnRange);
         AddChild(instance);
-        //Player.GetNode("/root/World").AddChild(instance);
-        // return enemy;
     }
     public Vector2 GetRandomPosAroundPlayer(int SpawnRange) => PlayerPos + SpawnRange * new Vector2(
             (float)GD.RandRange(-1f, 1f),
