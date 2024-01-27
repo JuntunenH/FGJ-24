@@ -18,18 +18,8 @@ texture = ExtResource("1_s7i4q")
 position = Vector2(0, -48)
 shape = SubResource("RectangleShape2D_u7g63")
 
-[node name="BackSwing" type="Timer" parent="."]
-wait_time = 0.3
-one_shot = true
-
 [node name="FadeTime" type="Timer" parent="."]
 one_shot = true
 
-[node name="WindUp" type="Timer" parent="."]
-wait_time = 0.2
-one_shot = true
-
 [connection signal="body_entered" from="." to="." method="_onBodyEntered"]
-[connection signal="timeout" from="BackSwing" to="." method="_onTimerTimeout"]
 [connection signal="timeout" from="FadeTime" to="." method="_onFadeTimeTimeout"]
-[connection signal="timeout" from="WindUp" to="." method="_onWindUpTimeout"]

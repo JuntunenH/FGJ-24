@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bgjw5d3tgvt0y" path="res://Prefabs/Weapons/Hammer.tscn" id="5_cc7kt"]
 [ext_resource type="PackedScene" uid="uid://do5o167773g2w" path="res://Prefabs/Weapons/ProjectileWeapon.tscn" id="6_7mwhc"]
 [ext_resource type="PackedScene" uid="uid://bmohkrincsiy" path="res://Prefabs/Weapons/projectile.tscn" id="7_2dnjc"]
-[ext_resource type="PackedScene" path="res://Prefabs/Weapons/whopee.tscn" id="8_p50si"]
+[ext_resource type="PackedScene" uid="uid://cnb62x1me6wu8" path="res://Prefabs/Weapons/whopee.tscn" id="8_p50si"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_id03m"]
 size = Vector2(54, 62)
@@ -36,8 +36,8 @@ script = ExtResource("4_2sybi")
 pivotTarget = NodePath("..")
 radius = 50.0
 
-[node name="Hammer" parent="." node_paths=PackedStringArray("hitDirection") instance=ExtResource("5_cc7kt")]
-hitDirection = NodePath("../DirectionArrow")
+[node name="Hammer" parent="." node_paths=PackedStringArray("attackDirection") instance=ExtResource("5_cc7kt")]
+attackDirection = NodePath("../DirectionArrow")
 attackSpeed = 5.0
 Damage = 15
 
@@ -45,6 +45,7 @@ Damage = 15
 WeaponProjectile = ExtResource("7_2dnjc")
 aimDirection = NodePath("../DirectionArrow")
 ProjectileSpeed = 500.0
+addRotation = true
 Damage = 15
 Cooldown = 2.0
 

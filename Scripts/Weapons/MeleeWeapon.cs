@@ -4,11 +4,9 @@ using System;
 public partial class MeleeWeapon : BaseWeapon
 {
 
-    [Export] private DirectionArrow hitDirection;
+    [Export] private DirectionArrow attackDirection;
     private CollisionShape2D collider;
-    private Timer attackBackSwing;
     private Timer fadeTime;
-    private Timer attackWindUp;
     private float angleInRad;
     private float radius = 20f;
     [Export]private float attackSpeed = 10f;
@@ -18,8 +16,6 @@ public partial class MeleeWeapon : BaseWeapon
         base._Ready();
         isActive = true;
         collider = GetNode<CollisionShape2D>("Collider");
-        attackBackSwing = GetNode<Timer>("BackSwing");
-        attackWindUp = GetNode<Timer>("WindUp");
         fadeTime = GetNode<Timer>("FadeTime");
         ResetAttack();
     }
@@ -50,6 +46,7 @@ public partial class MeleeWeapon : BaseWeapon
         canAttack = true;
         Visible = true;
         collider.Disabled = false;
+        angleInRad = attackDirection.GetAttackDirection().Angle();
     }
     public void _onBodyEntered(Node2D body)
     {
@@ -59,20 +56,10 @@ public partial class MeleeWeapon : BaseWeapon
 			enemy.TakeDamage(Damage);
         }
     }
-    protected void AttackAnimation()
-    {
-    }
-
-    public void _onTimerTimeout()
-    {
-    }
 
     public void _onFadeTimeTimeout()
     {
         ResetAttack();
     }
-    public void _onWindUpTimeout()
-    {
 
-    }
 }
