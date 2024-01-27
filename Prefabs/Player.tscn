@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b37hfbcace451"]
+[gd_scene load_steps=11 format=3 uid="uid://b37hfbcace451"]
 
 [ext_resource type="Script" path="res://Scripts/CharacterController.cs" id="1_rhx2k"]
 [ext_resource type="Texture2D" uid="uid://w6syvbgsido8" path="res://Textures/ClownCharacter.png" id="2_4a33e"]
@@ -7,10 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://bgjw5d3tgvt0y" path="res://Prefabs/Weapons/Hammer.tscn" id="5_cc7kt"]
 [ext_resource type="PackedScene" uid="uid://do5o167773g2w" path="res://Prefabs/Weapons/ProjectileWeapon.tscn" id="6_7mwhc"]
 [ext_resource type="PackedScene" uid="uid://bmohkrincsiy" path="res://Prefabs/Weapons/projectile.tscn" id="7_2dnjc"]
-[ext_resource type="PackedScene" uid="uid://cnb62x1me6wu8" path="res://Prefabs/Weapons/whopee.tscn" id="8_p50si"]
+[ext_resource type="PackedScene" path="res://Prefabs/Weapons/whopee.tscn" id="8_p50si"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_id03m"]
 size = Vector2(54, 62)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4iow8"]
+size = Vector2(59, 65)
 
 [node name="PlayerCharacter" type="CharacterBody2D" groups=["Player"]]
 z_index = 100
@@ -42,7 +45,6 @@ Damage = 15
 WeaponProjectile = ExtResource("7_2dnjc")
 aimDirection = NodePath("../DirectionArrow")
 ProjectileSpeed = 500.0
-addRotation = true
 Damage = 15
 Cooldown = 2.0
 
@@ -51,3 +53,11 @@ WeaponProjectile = ExtResource("8_p50si")
 aimDirection = NodePath("../DirectionArrow")
 Damage = 5
 Cooldown = 5.0
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, -1.5)
+shape = SubResource("RectangleShape2D_4iow8")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
