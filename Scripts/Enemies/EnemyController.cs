@@ -30,14 +30,11 @@ public partial class EnemyController : CharacterBody2D
 	private CharacterController _player;
 	Sprite2D e_sprite;
 	
-	public EnemyController _thisEnemy;
-
 	public override void _Ready()
 	{
 		_player = GetNode<CharacterController>("/root/World/PlayerCharacter");
 		// fetch player sprite
 		e_sprite = GetNode<Sprite2D>("Sprite2D");
-		var _thisEnemy = this;
 	}
 	public override void _PhysicsProcess(double delta)
 	{
@@ -48,15 +45,13 @@ public partial class EnemyController : CharacterBody2D
 		MoveAndSlide();
         for (int i = 0; i < GetSlideCollisionCount(); i++)
         {
-            var collision = GetSlideCollision(1);
+            var collision = GetSlideCollision(i);
             GD.Print("I collided with ", ((Node)collision.GetCollider()).Name);
-            //_player.TakeDamage(Damage);
-            // Damagecooldown?
+            _player.TakeDamage(Damage);
         }
 	}
 	public void TakeDamage(int amount){
-		GD.Print("Enemy take damage");
-		GD.Print(amount);
+		GD.Print("Enemy take damage ",amount);
 		Hitpoints-= amount;
 		if(Hitpoints<=0)
 		{

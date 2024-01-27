@@ -58,8 +58,8 @@ public partial class EnemyManager : Node
         var instance = _enemyPrefabs[enemyVariant].Instantiate<EnemyController>();
         instance.Position = GetRandomPosAroundPlayer(SpawnRange);
         spawnCount +=1;
-        instance.Hitpoints = instance.Hitpoints * ((int)GameTime/20);
-        instance.Damage = instance.Damage * ((int)GameTime/20);
+        instance.Hitpoints += instance.Hitpoints * ((int)GameTime/20);
+        instance.Damage += instance.Damage * ((int)GameTime/20);
         // 2 minutes = same move as player
         instance.MovementSpeed += instance.MovementSpeed * ((int)GameTime/20);
         instance.Position=GetRandomPosAroundPlayer(SpawnRange);

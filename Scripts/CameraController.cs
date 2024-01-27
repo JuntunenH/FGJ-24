@@ -30,7 +30,6 @@ public partial class CameraController : Camera2D
     private void SmoothFollow(double delta)
     {
         Vector2 targetPosition = m_cameraTarget.GlobalPosition + m_offsetVector;
-
         Position = new Vector2((float)Mathf.Lerp(Position.X, targetPosition.X, delta * m_cameraDamp), (float)Mathf.Lerp(Position.Y, targetPosition.Y, delta * m_cameraDamp));
     }
 

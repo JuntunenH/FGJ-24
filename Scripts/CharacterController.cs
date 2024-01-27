@@ -13,6 +13,16 @@ public partial class CharacterController : CharacterBody2D
 	public float MoveSpeed { get {return m_moveSpeed;} private set {m_moveSpeed = value; } }
 	[Export]
 	public int Health{get; private set;} = 100;
+	private Timer damageImmunity;
+	private bool is_Invulnerable = false;
+
+	public override void _Ready()
+    {
+		// fetch player sprite
+        m_sprite = GetNode<Sprite2D>("Sprite");
+		damageImmunity = GetNode<Timer>("ImmunityTimer");
+		damageImmunity.Timeout += OnTimerTimeout;
+    }
 
 	private void GetMoveInput()
 	{
@@ -35,12 +45,8 @@ public partial class CharacterController : CharacterBody2D
 	{
 		gameOver = true;
 		m_sprite.FlipV = true;
+		GetTree().Paused = true;
 	}
-    public override void _Ready()
-    {
-		// fetch player sprite
-        m_sprite = GetNode<Sprite2D>("Sprite");
-    }
     public override void _PhysicsProcess(double delta)
     {
 		GetMoveInput();
@@ -48,7 +54,29 @@ public partial class CharacterController : CharacterBody2D
 		MoveAndSlide();
     }
 	public void TakeDamage(int damage){
-		Health -= damage;
-		GD.Print(Health);
+		if(!is_Invulnerable)
+		{
+			Health -= damage;
+			is_Invulnerable = true;
+			// This needs effect! glow or something
+			damageImmunity.Start();
+			GD.Print("Player health left: ",Health);
+			if(Health<=0)
+			{
+				Die();
+			}
+		}
+	}
+	public void OnTimerTimeout()
+	{
+		is_Invulnerable = false;
+		// glow effect should end here
+	}
+	public void _on_area_2d_body_entered(Node2D body)
+	{
+		if(body.IsInGroup("Enemy")){
+			EnemyController enemy = (EnemyController)body;
+			TakeDamage(enemy.Damage);
+		}
 	}
 }
