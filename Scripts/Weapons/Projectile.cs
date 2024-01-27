@@ -4,7 +4,7 @@ using System;
 public partial class Projectile : BaseWeapon
 {
 	public Vector2 projectileDirection = Vector2.Right;
-	private float m_projectileSpeed;
+	protected float m_projectileSpeed;
 	[Export] public float  ProjectileSpeed { get { return m_projectileSpeed; } set {m_projectileSpeed = value;}}
 
 
@@ -29,7 +29,7 @@ public partial class Projectile : BaseWeapon
 		}
 	}
 
-	private void DisableSelf()
+	protected virtual void DisableSelf()
 	{
 		QueueFree();
 		//SetProcess(false);

@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://3jpk867hvwng"]
+
+[ext_resource type="Script" path="res://Scripts/Weapons/ProjectileWeapon.cs" id="1_hlrfm"]
+[ext_resource type="PackedScene" uid="uid://cgcyefv1v7byl" path="res://Prefabs/Weapons/balloonProjectile.tscn" id="2_1ip0r"]
+
+[node name="ProjectileWeapon" type="Node2D"]
+script = ExtResource("1_hlrfm")
+WeaponProjectile = ExtResource("2_1ip0r")

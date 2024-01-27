@@ -3,6 +3,7 @@ using System;
 
 public partial class balloonProjectile : Projectile
 {
+	[Export] public int hitsToDie = 5;
 	private AnimatedSprite2D spriteArray;
 	private RandomNumberGenerator rng = new RandomNumberGenerator();
 	private Vector2 originPoint;
@@ -19,10 +20,20 @@ public partial class balloonProjectile : Projectile
 
 	}
 
-	public override void _Process(double delta)
+    protected override void DisableSelf()
+    {
+		if( hitsToDie > 0 ){
+			hitsToDie -=1;
+			return;
+		}
+        base.DisableSelf();
+    }
+
+    public override void _Process(double delta)
 	{
-		Position = originPoint;
-		
+		Vector2 movementDirection = projectileDirection* m_projectileSpeed *(float)delta;
+		if(movementDirection.X < 0) spriteArray.FlipH = true;
+		GlobalPosition += movementDirection;
 	}
 
 }
