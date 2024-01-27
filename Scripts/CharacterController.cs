@@ -13,6 +13,8 @@ public partial class CharacterController : CharacterBody2D
 	public float MoveSpeed { get {return m_moveSpeed;} private set {m_moveSpeed = value; } }
 	[Export]
 	public int Health{get; private set;} = 100;
+	[Signal]
+	public delegate void GameOverEventHandler();
 	private Timer damageImmunity;
 	private bool is_Invulnerable = false;
 
@@ -45,6 +47,7 @@ public partial class CharacterController : CharacterBody2D
 	{
 		gameOver = true;
 		m_sprite.FlipV = true;
+		EmitSignal(SignalName.GameOver);
 		GetTree().Paused = true;
 	}
     public override void _PhysicsProcess(double delta)
