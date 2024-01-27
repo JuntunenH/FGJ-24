@@ -10,21 +10,31 @@ public partial class DirectionArrow : Sprite2D
 	private float sinTime = 0;
 
 	public override void _Process(double delta)
+    {
+
+    }
+
+    private void SetPosition(float angleInRad)
+    {
+        Vector2 moveTarget = new Vector2(Mathf.Cos(angleInRad) * radius, Mathf.Sin(angleInRad) * radius);
+
+        GlobalPosition = moveTarget + pivotTarget.Position;
+    }
+
+	private void SetRotation()
 	{
-
-		sinTime = (float)delta*moveSpeed;
-		Vector2 moveTarget = new Vector2(Mathf.Cos(sinTime)*radius, Mathf.Sin(sinTime)*radius);
-
-		GlobalPosition = moveTarget+pivotTarget.Position;
-		LookAt(GetGlobalMousePosition());
+		float direction = pivotTarget.GlobalPosition.AngleToPoint(GlobalPosition);
+		Rotation = direction;
 	}
 
     public override void _Input(InputEvent @event)
     {
         if(@event is InputEventMouseMotion eventMouseMotion){
-			// get relative
+			// get relative mouse position
 			Vector2 relativeMousePos = eventMouseMotion.GlobalPosition - pivotTarget.GlobalPosition;
-			GD.Print(relativeMousePos);
+			float relativeAngle=relativeMousePos.Angle();
+			SetPosition(relativeAngle);
+			SetRotation();
 		}
     }
 }
