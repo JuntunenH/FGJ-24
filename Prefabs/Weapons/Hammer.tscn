@@ -23,7 +23,6 @@ wait_time = 0.3
 one_shot = true
 
 [node name="FadeTime" type="Timer" parent="."]
-wait_time = 0.2
 one_shot = true
 
 [node name="WindUp" type="Timer" parent="."]

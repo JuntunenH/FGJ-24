@@ -9,7 +9,10 @@ public partial class MeleeWeapon : BaseWeapon
     private Timer attackBackSwing;
     private Timer fadeTime;
     private Timer attackWindUp;
-
+    private float angleInRad;
+    private float radius = 20f;
+    [Export]private float attackSpeed = 10f;
+    private bool canAttack = false;
     public override void _Ready()
     {
         base._Ready();
@@ -18,38 +21,50 @@ public partial class MeleeWeapon : BaseWeapon
         attackBackSwing = GetNode<Timer>("BackSwing");
         attackWindUp = GetNode<Timer>("WindUp");
         fadeTime = GetNode<Timer>("FadeTime");
+        ResetAttack();
+    }
+    public override void _PhysicsProcess(double delta)
+    {
+        base._PhysicsProcess(delta);
+        if( !canAttack ) return;
+        angleInRad += (float)delta*attackSpeed;
+        Position = new Vector2(Mathf.Cos(angleInRad) * radius, Mathf.Sin(angleInRad) * radius);
+        Rotation = angleInRad;
     }
     public override void Attack()
     {
         base.Attack();
-        Visible = true;
-        attackWindUp.Start();
+        EnableAttack();
+        fadeTime.Start();
     }
 
-    protected void ResetAnimation()
+    protected void ResetAttack()
     {
-        RotationDegrees = 0f;
+        angleInRad = 0;
+        Visible = false;
         collider.Disabled = true;
-        fadeTime.Start();
+        canAttack=false;
+    }
+    protected void EnableAttack()
+    {
+        canAttack = true;
+        Visible = true;
+        collider.Disabled = false;
     }
     protected void AttackAnimation()
     {
-        collider.Disabled = false;
-        RotationDegrees = 95f;
-        attackBackSwing.Start();
     }
 
     public void _onTimerTimeout()
     {
-        ResetAnimation();
     }
 
     public void _onFadeTimeTimeout()
     {
-        Visible = false;
+        ResetAttack();
     }
     public void _onWindUpTimeout()
     {
-        AttackAnimation();
+
     }
 }

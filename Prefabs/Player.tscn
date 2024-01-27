@@ -34,6 +34,8 @@ radius = 50.0
 
 [node name="Hammer" parent="." node_paths=PackedStringArray("hitDirection") instance=ExtResource("5_cc7kt")]
 hitDirection = NodePath("../DirectionArrow")
+attackSpeed = 5.0
+Damage = 15
 
 [node name="ProjectileWeapon" parent="." node_paths=PackedStringArray("aimDirection") instance=ExtResource("6_7mwhc")]
 WeaponProjectile = ExtResource("7_2dnjc")
