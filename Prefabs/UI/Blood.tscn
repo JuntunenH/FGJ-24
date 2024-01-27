@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dayo0uu31vur2"]
+
+[ext_resource type="Texture2D" uid="uid://c1n3bsngma7ll" path="res://Textures/Blood.png" id="1_0bwfj"]
+
+[node name="Blood" type="Sprite2D"]
+position = Vector2(16, 269)
+texture = ExtResource("1_0bwfj")

@@ -6,8 +6,9 @@ public partial class ClownCar : RigidBody2D
 {
 
     /// <summary>
-    /// When shop car comes to the scene, it can be only accessed ones.
+    /// When shop car comes to the scene, it can be only accessed once.
     /// </summary>
+    private PackedScene blood = GD.Load<PackedScene>("res://Prefabs/UI/Blood.tscn");
     private bool _shopUsed = false;
 
     public override void _Ready()
@@ -51,6 +52,9 @@ public partial class ClownCar : RigidBody2D
         }
         else if (body.IsInGroup("Enemy"))
         {
+            Node2D splatter = (Node2D)blood.Instantiate();
+            splatter.Position = body.Position;
+            GetParent().AddChild(splatter);
             body.QueueFree();
         }
     }
