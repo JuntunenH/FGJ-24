@@ -7,7 +7,9 @@ using System.Linq;
 
 public partial class EnemyManager : Node
 {
-    public int testSpawn = 1;
+    [Export]
+    public int MaxEnemies { get; set; } = 100;
+    public int spawnCount = 1;
     public const int SpawnRange = 500;
     public float SpawnRate {get; private set;}= 1;
     public double SpawnDelay {get; private set;}=1;
@@ -33,36 +35,36 @@ public partial class EnemyManager : Node
     {
         GameTime += delta;
         SpawnDelay -= delta;
-        int enemiesToSpawn = 1;
+        int enemiesToSpawn = 1; // This could be increased if we want so it spawns more at the same time
         PlayerPos = Player.GlobalPosition;
-        if (testSpawn <= 10)
+        if (spawnCount <= MaxEnemies && SpawnDelay < 0)
         {
             for (int i = 0; i < enemiesToSpawn; ++i)
             {
                 SpawnEnemy(EnemyVariant.Melee);
             }
+            SpawnDelay = 1;
         }
     }
 
     private void SpawnEnemy(EnemyVariant enemyVariant)
     {
-        var testScene = GD.Load<PackedScene>("res://Prefabs/EnemyMeleeMime.tscn");
-        var instance = testScene.Instantiate<EnemyController>();
-        testSpawn +=1;
-        AddChild(instance);
+        //var testScene = GD.Load<PackedScene>("res://Prefabs/EnemyMeleeMime.tscn");
+        //var instance = testScene.Instantiate<EnemyController>();
+        // testSpawn +=1;
+        // AddChild(instance);
+
+        // Correct code:
+        var instance = _enemyPrefabs[enemyVariant].Instantiate<EnemyController>();
         instance.Position = GetRandomPosAroundPlayer(SpawnRange);
-        GD.Print(instance.Position);
-        // Tää on aivan vitun kesken (Koita kaivaa se controller tai body tai mikä onkaan ja vaihtaa position)
-        
-
-        // var sceneEnemy = _enemyPrefabs[enemyVariant].Instantiate();
-        // var enemy = sceneEnemy.GetNode<EnemyController>("/root/World/Enemy");
-        // enemy.Hitpoints = enemy.Hitpoints * ((int)GameTime/1000); // Ei hajuakaan gametime arvoista, pitää testata
-        // enemy.Damage = enemy.Damage * ((int)GameTime/1000);
-        // enemy.MovementSpeed = enemy.MovementSpeed * ((int)GameTime/1000);
-        // enemy.Position=GetRandomPosAroundPlayer(SpawnRange);
-        // Player.GetNode("/root/World").AddChild(enemy);
-
+        spawnCount +=1;
+        instance.Hitpoints = instance.Hitpoints * ((int)GameTime/20);
+        instance.Damage = instance.Damage * ((int)GameTime/20);
+        // 2 minutes = same move as player
+        instance.MovementSpeed += instance.MovementSpeed * ((int)GameTime/20);
+        instance.Position=GetRandomPosAroundPlayer(SpawnRange);
+        AddChild(instance);
+        //Player.GetNode("/root/World").AddChild(instance);
         // return enemy;
     }
     public Vector2 GetRandomPosAroundPlayer(int SpawnRange) => PlayerPos + SpawnRange * new Vector2(
