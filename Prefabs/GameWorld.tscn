@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cf7uagyjdt236"]
+[gd_scene load_steps=8 format=3 uid="uid://cf7uagyjdt236"]
 
 [ext_resource type="Texture2D" uid="uid://8apsxd410qxt" path="res://TIlemap.png" id="1_m0ie8"]
 [ext_resource type="PackedScene" uid="uid://b37hfbcace451" path="res://Prefabs/Player.tscn" id="2_0olax"]
 [ext_resource type="PackedScene" uid="uid://c1ahkd45fxpl4" path="res://Prefabs/GameCamera.tscn" id="3_fctxj"]
 [ext_resource type="PackedScene" uid="uid://bs417wacbf8y3" path="res://Prefabs/EnemyMeleeMime.tscn" id="4_8sf0d"]
+[ext_resource type="Script" path="res://Scripts/Enemies/EnemyManager.cs" id="5_n1tx5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kt7sk"]
 texture = ExtResource("1_m0ie8")
@@ -32,3 +33,7 @@ m_cameraTarget = NodePath("../PlayerCharacter")
 
 [node name="Enemy" parent="." instance=ExtResource("4_8sf0d")]
 position = Vector2(522, -9)
+
+[node name="EnemySpawner" type="Node2D" parent="."]
+script = ExtResource("5_n1tx5")
+MaxEnemies = 200
