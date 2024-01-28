@@ -11,8 +11,8 @@ public partial class MainMenu : Control
 
 	private void _OnButtonNewGamePressed()
 	{
-		GetTree().ChangeSceneToFile("res://GameWorld.tscn");
-	}
+		GetTree().ChangeSceneToFile("res://Prefabs/GameWorld.tscn");
+    }
     private void _OnButtonCreditsPressed()
     {
         //GetTree().ChangeSceneToFile("res://GameWorld.tscn");

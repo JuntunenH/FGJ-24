@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="The last laugh"
-run/main_scene="res://Prefabs/GameWorld.tscn"
+run/main_scene="res://Prefabs/UI/MainMenu.tscn"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 config/icon="res://Textures/ClownCharacter.png"
 config/windows_native_icon="res://Textures/clown_ico.ico"

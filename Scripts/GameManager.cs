@@ -26,11 +26,9 @@ public partial class GameManager : Node2D
     }
 
     public void NewGame() {
-        //TODO: Create new game logic..
+
         // Timers, signals etc.
         GD.Print("Game started..");
-
-        GD.Print("GameManager created");
         ClownCarScene = GD.Load<PackedScene>("res://Prefabs/ClownCar.tscn");
         ShopScene = GD.Load<PackedScene>("res://Prefabs/UI/Shop.tscn");
 
