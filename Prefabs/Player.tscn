@@ -4,12 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://w6syvbgsido8" path="res://Textures/ClownCharacter.png" id="2_4a33e"]
 [ext_resource type="Texture2D" uid="uid://dlpprnrgrxvdg" path="res://Textures/DirectionArrow.png" id="3_3odf4"]
 [ext_resource type="Script" path="res://Scripts/DirectionArrow.cs" id="4_2sybi"]
-[ext_resource type="PackedScene" uid="uid://bgjw5d3tgvt0y" path="res://Prefabs/Weapons/Hammer.tscn" id="5_cc7kt"]
+[ext_resource type="PackedScene" path="res://Prefabs/Weapons/Hammer.tscn" id="5_cc7kt"]
 [ext_resource type="PackedScene" uid="uid://do5o167773g2w" path="res://Prefabs/Weapons/ProjectileWeapon.tscn" id="6_7mwhc"]
 [ext_resource type="PackedScene" uid="uid://bmohkrincsiy" path="res://Prefabs/Weapons/projectile.tscn" id="7_2dnjc"]
-[ext_resource type="PackedScene" uid="uid://cnb62x1me6wu8" path="res://Prefabs/Weapons/whopee.tscn" id="8_p50si"]
-[ext_resource type="PackedScene" uid="uid://3jpk867hvwng" path="res://Prefabs/Weapons/BalloonShooter.tscn" id="9_3dehs"]
-[ext_resource type="PackedScene" uid="uid://c6co1s15kfsca" path="res://Prefabs/Weapons/waterBalloon.tscn" id="10_fcf8k"]
+[ext_resource type="PackedScene" path="res://Prefabs/Weapons/whopee.tscn" id="8_p50si"]
+[ext_resource type="PackedScene" path="res://Prefabs/Weapons/BalloonShooter.tscn" id="9_3dehs"]
+[ext_resource type="PackedScene" path="res://Prefabs/Weapons/waterBalloon.tscn" id="10_fcf8k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_id03m"]
 size = Vector2(54, 62)
@@ -65,7 +65,7 @@ ProjectileSpeed = 10.0
 Damage = 10
 Cooldown = 4.0
 
-[node name="SuperSoaker" parent="." node_paths=PackedStringArray("aimDirection") instance=ExtResource("6_7mwhc")]
+[node name="WaterGun" parent="." node_paths=PackedStringArray("aimDirection") instance=ExtResource("6_7mwhc")]
 WeaponProjectile = ExtResource("10_fcf8k")
 aimDirection = NodePath("../DirectionArrow")
 ProjectileSpeed = 5.0
