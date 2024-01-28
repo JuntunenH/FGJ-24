@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c67peeo57md8l"
-path="res://.godot/imported/AmogusBaloon.png-b266cd80452c8460ccc3dfb4a1eac4ee.ctex"
+path="res://.godot/imported/BalloonWithRocket.png-cf352c92c3d7af8e563ae17aa0b24021.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/AmogusBaloon.png"
-dest_files=["res://.godot/imported/AmogusBaloon.png-b266cd80452c8460ccc3dfb4a1eac4ee.ctex"]
+source_file="res://Textures/BalloonWithRocket.png"
+dest_files=["res://.godot/imported/BalloonWithRocket.png-cf352c92c3d7af8e563ae17aa0b24021.ctex"]
 
 [params]
 
