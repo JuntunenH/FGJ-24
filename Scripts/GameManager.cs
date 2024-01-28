@@ -16,6 +16,9 @@ public partial class GameManager : Node2D
     // PlayerCamera manager
     private Camera2D _camera2D = null;
 
+    // Car min/max spawning speed
+    private float _minCarSpeed = 200.0f, _maxCarSpeed = 600.0f;
+
     [Signal] public delegate void LevelUpEventEventHandler(string skill);
 	public override void _Ready()
 	{
@@ -63,9 +66,9 @@ public partial class GameManager : Node2D
         clownCar.GetNode<Sprite2D>("Sprite2D").FlipH = GD.Randi() % 2 == 0;
 
         if (clownCar.Position == bottomRight)
-            clownCar.LinearVelocity = new Vector2((float)GD.RandRange(200, 400), 0) * -1;
+            clownCar.LinearVelocity = new Vector2((float)GD.RandRange(_minCarSpeed, _minCarSpeed), 0) * -1;
         else
-            clownCar.LinearVelocity = new Vector2((float)GD.RandRange(200, 400), 0);
+            clownCar.LinearVelocity = new Vector2((float)GD.RandRange(_minCarSpeed, _minCarSpeed), 0);
 
         AddChild(clownCar);
     }

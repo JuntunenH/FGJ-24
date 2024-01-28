@@ -10,6 +10,7 @@ public partial class ClownCar : RigidBody2D
     /// </summary>
     private PackedScene blood = GD.Load<PackedScene>("res://Prefabs/UI/Blood.tscn");
     private bool _shopUsed = false;
+    private bool _isCarStopped = false;
 
     public override void _Ready()
     {
@@ -37,7 +38,11 @@ public partial class ClownCar : RigidBody2D
                 //var player = collider.GetNode<CharacterBody2D>("PlayerCharacter");
             }                    
         }
-
+        GD.Print(LinearVelocity);
+        if (LinearVelocity.X > -4.0f && LinearVelocity.X < 4.0f)
+            _isCarStopped = true;
+        if (_isCarStopped)
+            ApplyForce(new Vector2(50000.0f, 0.0f)); // WRUUUUUUUM :D
     }
 
     private void _OnBodyEntered(Node2D body)
