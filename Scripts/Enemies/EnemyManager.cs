@@ -33,7 +33,8 @@ public partial class EnemyManager : Node
     {
         GameTime += delta;
         SpawnDelay -= delta;
-        int enemiesToSpawn = 1 * ((int)GameTime/20);
+        int enemiesToSpawn = 1;
+        enemiesToSpawn = 1 + enemiesToSpawn * ((int)GameTime/20);
         PlayerPos = Player.GlobalPosition;
         if (SpawnDelay < 0)
         {
