@@ -24,7 +24,7 @@ script = ExtResource("5_n1tx5")
 MaxEnemies = 200
 
 [node name="ClownCarTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 15.0
 one_shot = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
