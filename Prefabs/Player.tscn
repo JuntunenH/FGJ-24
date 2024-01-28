@@ -56,7 +56,7 @@ Cooldown = 2.0
 [node name="Whoopee" parent="." node_paths=PackedStringArray("aimDirection") instance=ExtResource("6_7mwhc")]
 WeaponProjectile = ExtResource("8_p50si")
 aimDirection = NodePath("../DirectionArrow")
-Damage = 5
+Damage = 10
 Cooldown = 5.0
 
 [node name="RubberBullet" parent="." node_paths=PackedStringArray("aimDirection") instance=ExtResource("9_3dehs")]

@@ -8,7 +8,7 @@ using System.Linq;
 public partial class EnemyManager : Node
 {
     public int spawnCount = 1;
-    public const int SpawnRange = 500;
+    public const int SpawnRange = 700;
     public float SpawnRate {get; private set;}= 1;
     public double SpawnDelay {get; private set;}=1;
     public  Dictionary<EnemyVariant, PackedScene> _enemyPrefabs;
@@ -34,7 +34,7 @@ public partial class EnemyManager : Node
         GameTime += delta;
         SpawnDelay -= delta;
         int enemiesToSpawn = 1;
-        enemiesToSpawn = 1 + enemiesToSpawn * ((int)GameTime/20);
+        enemiesToSpawn = 1 + enemiesToSpawn * ((int)GameTime/50);
         PlayerPos = Player.GlobalPosition;
         if (SpawnDelay < 0)
         {
@@ -51,7 +51,6 @@ public partial class EnemyManager : Node
         var instance = _enemyPrefabs[enemyVariant].Instantiate<EnemyController>();
         instance.Position = GetRandomPosAroundPlayer(SpawnRange);
         spawnCount +=1;
-        instance.Hitpoints += instance.Hitpoints * ((int)GameTime/20);
         instance.Damage += instance.Damage * ((int)GameTime/20);
         // 2 minutes = same move as player
         instance.MovementSpeed += instance.MovementSpeed * ((int)GameTime/20);
