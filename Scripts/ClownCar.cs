@@ -34,7 +34,7 @@ public partial class ClownCar : RigidBody2D
         if (LinearVelocity.X > -4.0f && LinearVelocity.X < 4.0f)
             _isCarStopped = true;
         if (_isCarStopped)
-            ApplyForce(new Vector2(50000.0f, 0.0f)); // WRUUUUUUUM :D
+            ApplyForce(new Vector2(100000.0f, 0.0f)); // WRUUUUUUUM :D
     }
 
     private void _OnBodyEntered(Node2D body)
