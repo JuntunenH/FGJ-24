@@ -16,6 +16,7 @@ contact_monitor = true
 script = ExtResource("1_un2ii")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 10
 scale = Vector2(2, 2)
 texture = ExtResource("2_4lub2")
 
