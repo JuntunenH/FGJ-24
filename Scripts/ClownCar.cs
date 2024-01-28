@@ -50,6 +50,9 @@ public partial class ClownCar : RigidBody2D
         else if (body.IsInGroup("Enemy"))
         {
             Node2D splatter = (Node2D)blood.Instantiate();
+            GD.Randomize();
+            splatter.Modulate = new Color((float)GD.RandRange(0f, 1f), (float)GD.RandRange(0f, 1f), (float)GD.RandRange(0f, 1f));
+            GD.Print(splatter.Modulate.ToString());
             splatter.Position = body.Position;
             GetParent().AddChild(splatter);
             body.QueueFree();
