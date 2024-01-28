@@ -16,7 +16,6 @@ public partial class BaseWeapon : Node2D
 	private float m_cooldownTimer;
 
 	public float CooldownTimer { get {return m_cooldownTimer;} protected set {m_cooldownTimer = value;} }
-
 	public bool isActive = false;
 	public virtual void Attack()
 	{
@@ -34,7 +33,6 @@ public partial class BaseWeapon : Node2D
     public override void _Process(double delta)
     {
 		if(!isActive) return;
-
 		if(m_cooldownTimer >= 0) {
 			m_cooldownTimer -= (float)delta;
 			return;
@@ -44,19 +42,21 @@ public partial class BaseWeapon : Node2D
 
 	public virtual void IncreaseSize(float percentage)
 	{
-		percentage += 1.0f;
-		Scale = new Vector2(Scale.X*percentage, Scale.Y*percentage);
+		Scale *= percentage;
+		GD.Print($"Size increased to {Scale}");
 	}
 
 	public virtual void IncreaseAttackSpeed(float percentage)
 	{
-		m_cooldown -= m_cooldown*percentage;
+		m_cooldown *= percentage;
+		GD.Print($"ATK SPD increased to {m_cooldown}");
 	}
 
 	public virtual void IncreaseDamage(float percentage)
 	{
 		float damageIncrease = Damage*percentage;
 		Damage += (int)Mathf.Floor(damageIncrease);
+		GD.Print($"ATK DMG increase to: {Damage}");
 	}
 
 	public virtual void UpgradeWeapon()

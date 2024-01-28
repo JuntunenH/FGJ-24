@@ -12,11 +12,6 @@ public partial class balloonProjectile : Projectile
 	{
 		spriteArray = GetNode<AnimatedSprite2D>("SpriteArray");
 		spriteArray.Frame = rng.RandiRange(0,4);
-		Node2D parentNode = GetParent<Node2D>();
-		if( parentNode != null)
-		{
-			originPoint = parentNode.Position;
-		}
 
 	}
 

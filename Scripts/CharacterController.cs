@@ -1,6 +1,6 @@
 using Godot;
 using System;
-using System.Data.SqlTypes;
+
 
 
 public partial class CharacterController : CharacterBody2D
@@ -27,6 +27,7 @@ public partial class CharacterController : CharacterBody2D
 		damageImmunity = GetNode<Timer>("ImmunityTimer");
 		damageImmunity.Timeout += OnTimerTimeout;
 		_gameManager = GetNode<GameManager>("/root/GameManager");
+		_gameManager.LevelUpEvent += LevelUp;
     }
 
 	private void GetMoveInput()
@@ -48,6 +49,7 @@ public partial class CharacterController : CharacterBody2D
 
 	private void Die()
 	{
+		_gameManager.LevelUpEvent -= LevelUp;
 		gameOver = true;
 		m_sprite.FlipV = true;
 		EmitSignal(SignalName.GameOver);
@@ -83,6 +85,20 @@ public partial class CharacterController : CharacterBody2D
 		if(body.IsInGroup("Enemy")){
 			EnemyController enemy = (EnemyController)body;
 			TakeDamage(enemy.Damage);
+		}
+	}
+
+	public void LevelUp(string skill)
+	{
+		GD.Print("Level Up Called");
+		foreach(var child in GetChildren()){
+			if(child is BaseWeapon){
+				GD.Print($"Updating {child.Name}");
+				if(skill == "ATKSPD")
+					child.GetNode<BaseWeapon>(child.GetPath()).IncreaseAttackSpeed(_gameManager.ATKSpeedMultp);
+				if(skill == "ATKSZ")
+					child.GetNode<BaseWeapon>(child.GetPath()).IncreaseSize(_gameManager.ATKSizeMultp);
+			}
 		}
 	}
 }

@@ -67,12 +67,15 @@ public partial class BaseShopButton : Button
         {
             case Skills.MovementSpeed:
                 gameManager.MoveSpeedMultp *= _valueMultp;
+                gameManager.LevelUp("MoveSPD");
                 break;
             case Skills.AttackSpeed:
                 gameManager.ATKSpeedMultp *= _valueMultp;
+                gameManager.LevelUp("ATKSPD");
                 break;
             case Skills.AttackSize:
                 gameManager.ATKSizeMultp *= _valueMultp;
+                gameManager.LevelUp("ATKSZ");
                 break;
         }
     }

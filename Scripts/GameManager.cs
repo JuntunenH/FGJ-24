@@ -16,6 +16,7 @@ public partial class GameManager : Node2D
     // PlayerCamera manager
     private Camera2D _camera2D = null;
 
+    [Signal] public delegate void LevelUpEventEventHandler(string skill);
 	public override void _Ready()
 	{
         GD.Print("GameManager created");
@@ -75,6 +76,11 @@ public partial class GameManager : Node2D
         _camera2D.AddChild(shop);
 
         GetTree().Paused = true;
+    }
+
+    public void LevelUp(string skill)
+    {
+        EmitSignal(SignalName.LevelUpEvent, skill);
     }
 
 }
