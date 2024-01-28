@@ -23,7 +23,6 @@ m_cameraTarget = NodePath("../PlayerCharacter")
 
 [node name="EnemySpawner" type="Node2D" parent="."]
 script = ExtResource("5_n1tx5")
-MaxEnemies = 200
 
 [node name="ClownCarTimer" type="Timer" parent="."]
 wait_time = 15.0
