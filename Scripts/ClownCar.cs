@@ -38,7 +38,6 @@ public partial class ClownCar : RigidBody2D
                 //var player = collider.GetNode<CharacterBody2D>("PlayerCharacter");
             }                    
         }
-        GD.Print(LinearVelocity);
         if (LinearVelocity.X > -4.0f && LinearVelocity.X < 4.0f)
             _isCarStopped = true;
         if (_isCarStopped)
