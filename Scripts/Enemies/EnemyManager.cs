@@ -7,8 +7,6 @@ using System.Linq;
 
 public partial class EnemyManager : Node
 {
-    [Export]
-    public int MaxEnemies { get; set; } = 100;
     public int spawnCount = 1;
     public const int SpawnRange = 500;
     public float SpawnRate {get; private set;}= 1;
@@ -37,7 +35,7 @@ public partial class EnemyManager : Node
         SpawnDelay -= delta;
         int enemiesToSpawn = 1 * ((int)GameTime/20);
         PlayerPos = Player.GlobalPosition;
-        if (spawnCount <= MaxEnemies && SpawnDelay < 0)
+        if (SpawnDelay < 0)
         {
             for (int i = 0; i < enemiesToSpawn; ++i)
             {
