@@ -15,6 +15,8 @@ public partial class GameWorld : Node2D
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
 	{
+        var gameManager = GetNode<GameManager>("/root/GameManager");
+        gameManager.Initialize();
         NewGame();
 	}
     // Initializes the game world

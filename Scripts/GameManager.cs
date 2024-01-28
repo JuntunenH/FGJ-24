@@ -9,9 +9,12 @@ public partial class GameManager : Node2D
     public float ATKSizeMultp { get; set; } = 1.0f;
 
     [Signal] public delegate void LevelUpEventEventHandler(string skill);
-	public override void _Ready()
-	{
-
+	
+    public void Initialize()
+    {
+        MoveSpeedMultp = 1.0f;
+        ATKSpeedMultp = 1.0f;
+        ATKSizeMultp = 1.0f;
     }
 
     public void LevelUp(string skill)
