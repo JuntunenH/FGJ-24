@@ -10,7 +10,6 @@ public partial class EndGameScreen : Control
 
     public override void _Ready()
 	{
-        GetNode<GameManager>("/root/GameManager")?.NewGame();
 		ProcessMode = ProcessModeEnum.Always;
     }
 

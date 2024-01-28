@@ -1,12 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://dvlfsoirfk23h"]
+[gd_scene load_steps=7 format=3 uid="uid://dvlfsoirfk23h"]
 
-[ext_resource type="PackedScene" uid="uid://bd2vppt8tku2c" path="res://GameMap.tscn" id="1_tumyh"]
+[ext_resource type="Script" path="res://Prefabs/GameWorld.cs" id="1_1e8kg"]
+[ext_resource type="PackedScene" path="res://GameMap.tscn" id="1_tumyh"]
 [ext_resource type="PackedScene" uid="uid://b37hfbcace451" path="res://Prefabs/Player.tscn" id="2_0olax"]
-[ext_resource type="PackedScene" uid="uid://c1ahkd45fxpl4" path="res://Prefabs/GameCamera.tscn" id="3_fctxj"]
-[ext_resource type="PackedScene" uid="uid://6l1xiy8ocr3t" path="res://Prefabs/UI/EndGameScreen.tscn" id="5_82s0e"]
+[ext_resource type="PackedScene" path="res://Prefabs/GameCamera.tscn" id="3_fctxj"]
+[ext_resource type="PackedScene" path="res://Prefabs/UI/EndGameScreen.tscn" id="5_82s0e"]
 [ext_resource type="Script" path="res://Scripts/Enemies/EnemyManager.cs" id="5_n1tx5"]
 
 [node name="World" type="Node2D"]
+script = ExtResource("1_1e8kg")
 
 [node name="TileMap" parent="." instance=ExtResource("1_tumyh")]
 z_index = -1

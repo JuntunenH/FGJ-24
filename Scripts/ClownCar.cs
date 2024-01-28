@@ -43,8 +43,8 @@ public partial class ClownCar : RigidBody2D
         {
             GD.Print("Player in the area");
             if (!_shopUsed) {
-                var gameManager = GetNode<GameManager>("/root/GameManager");
-                gameManager.SpawnShopScene();                
+                var gameWorld = GetParent<GameWorld>();
+                gameWorld?.SpawnShopScene();                
             }
         }
         else if (body.IsInGroup("Enemy"))
