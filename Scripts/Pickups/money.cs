@@ -23,7 +23,7 @@ public partial class money : Area2D
 			if(body.IsInGroup("Player"))
 			{
 				_sound.Play();
-				_player.money +=1;
+				_player.AddMoney(1);
 				GD.Print("Player money: ", _player.money);
 				QueueFree();
 			}

@@ -15,6 +15,8 @@ public partial class CharacterController : CharacterBody2D
 	public int Health = 100;
 	[Signal]
 	public delegate void GameOverEventHandler();
+	[Signal]
+	public delegate void MoneyGainedEventHandler();
 	public int money = 0;
 	private Timer damageImmunity;
 	private bool is_Invulnerable = false;
@@ -85,6 +87,10 @@ public partial class CharacterController : CharacterBody2D
 			EnemyController enemy = (EnemyController)body;
 			TakeDamage(enemy.Damage);
 		}
+	}
+	public void AddMoney(int amount){
+		money += amount;
+		EmitSignal(SignalName.MoneyGained);
 	}
 
 	public void LevelUp(string skill)

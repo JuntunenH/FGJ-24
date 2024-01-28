@@ -5,7 +5,7 @@ public partial class EndGameScreen : Control
 {
 	[Export] private Label scoreText;
 	[Export] public int score;
-	[Export] Node2D playerScore;
+	[Export] CharacterController playerScore;
     // Called when the node enters the scene tree for the first time.
 
     public override void _Ready()
@@ -17,6 +17,9 @@ public partial class EndGameScreen : Control
 	public override void _Process(double delta)
 	{
 		scoreText.Text = $"Score: {score}";
+	}
+	public void UpdateScore(){
+		score = playerScore.money;
 	}
 	public void ShowScreen(){
 		this.Show();
