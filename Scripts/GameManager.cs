@@ -22,17 +22,17 @@ public partial class GameManager : Node2D
     [Signal] public delegate void LevelUpEventEventHandler(string skill);
 	public override void _Ready()
 	{
-        GD.Print("GameManager created");
-        ClownCarScene = GD.Load<PackedScene>("res://Prefabs/ClownCar.tscn");
-        ShopScene = GD.Load<PackedScene>("res://Prefabs/UI/Shop.tscn");
-        
-        NewGame();
+
     }
 
     public void NewGame() {
         //TODO: Create new game logic..
         // Timers, signals etc.
         GD.Print("Game started..");
+
+        GD.Print("GameManager created");
+        ClownCarScene = GD.Load<PackedScene>("res://Prefabs/ClownCar.tscn");
+        ShopScene = GD.Load<PackedScene>("res://Prefabs/UI/Shop.tscn");
 
         var root = GetTree().CurrentScene;
         if (root != null) { GD.Print($"Root Node name: {root.Name}"); }
