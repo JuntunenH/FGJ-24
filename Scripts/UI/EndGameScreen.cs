@@ -5,7 +5,6 @@ public partial class EndGameScreen : Control
 {
 	[Export] private Label scoreText;
 	[Export] public int score;
-	[Export] PackedScene MainMenu;
 	[Export] Node2D playerScore;
     // Called when the node enters the scene tree for the first time.
 
@@ -26,7 +25,7 @@ public partial class EndGameScreen : Control
 	}
 	public void GoMainMenu(){
 		GetTree().Paused = false;
-		GetTree().ChangeSceneToPacked(MainMenu);
+		GetTree().ChangeSceneToFile("res://Prefabs/UI/MainMenu.tscn");
 	}
 	public void Quit(){
 		GetTree().Quit();

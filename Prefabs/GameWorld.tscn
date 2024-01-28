@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://dvlfsoirfk23h"]
 
-[ext_resource type="PackedScene" path="res://GameMap.tscn" id="1_tumyh"]
+[ext_resource type="PackedScene" uid="uid://bd2vppt8tku2c" path="res://GameMap.tscn" id="1_tumyh"]
 [ext_resource type="PackedScene" uid="uid://b37hfbcace451" path="res://Prefabs/Player.tscn" id="2_0olax"]
-[ext_resource type="PackedScene" path="res://Prefabs/GameCamera.tscn" id="3_fctxj"]
-[ext_resource type="PackedScene" path="res://Prefabs/UI/EndGameScreen.tscn" id="5_82s0e"]
+[ext_resource type="PackedScene" uid="uid://c1ahkd45fxpl4" path="res://Prefabs/GameCamera.tscn" id="3_fctxj"]
+[ext_resource type="PackedScene" uid="uid://6l1xiy8ocr3t" path="res://Prefabs/UI/EndGameScreen.tscn" id="5_82s0e"]
 [ext_resource type="Script" path="res://Scripts/Enemies/EnemyManager.cs" id="5_n1tx5"]
 
 [node name="World" type="Node2D"]
@@ -26,7 +26,6 @@ wait_time = 5.0
 one_shot = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="EndGameScreen" parent="CanvasLayer" instance=ExtResource("5_82s0e")]
 visible = false

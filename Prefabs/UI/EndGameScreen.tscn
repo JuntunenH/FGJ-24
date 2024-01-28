@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://6l1xiy8ocr3t"]
+[gd_scene load_steps=6 format=3 uid="uid://6l1xiy8ocr3t"]
 
 [ext_resource type="StyleBox" uid="uid://c1onyctil340s" path="res://Prefabs/UI/MenuNormalButton.tres" id="1_6xghf"]
 [ext_resource type="Script" path="res://Scripts/UI/EndGameScreen.cs" id="1_fjw3j"]
 [ext_resource type="StyleBox" uid="uid://6ww6oo8vu08m" path="res://Prefabs/UI/MenuButtonHover.tres" id="2_0ebp3"]
-[ext_resource type="PackedScene" uid="uid://cgawkfdjrfm86" path="res://Prefabs/UI/MainMenu.tscn" id="2_2oihr"]
 [ext_resource type="Texture2D" uid="uid://cr3ftll65l74l" path="res://Textures/Banana.png" id="2_snpka"]
 [ext_resource type="StyleBox" uid="uid://cvlscmleib057" path="res://Prefabs/UI/MenuButtonPressed.tres" id="3_2g8rg"]
 
@@ -18,7 +17,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_fjw3j")
 scoreText = NodePath("MarginContainer/VBoxContainer/HBoxContainer/ScoreText")
-MainMenu = ExtResource("2_2oihr")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
