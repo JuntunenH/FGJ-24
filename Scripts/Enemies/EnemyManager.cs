@@ -63,11 +63,11 @@ public partial class EnemyManager : Node
             (float)GD.RandRange(-1f, 1f)
             ).Normalized();
 
-    public override void _Input(InputEvent @event)
-    {
-        if (@event is InputEventKey e && e.Keycode == Key.Space && e.Pressed)
-            SpawnEnemy(EnemyVariant.Melee);
-    }
+    // public override void _Input(InputEvent @event)
+    // {
+    //     if (@event is InputEventKey e && e.Keycode == Key.Space && e.Pressed)
+    //         SpawnEnemy(EnemyVariant.Melee);
+    // }
 
     private void HandleLoot(PackedScene lootDrop, Vector2 lootPosition, EnemyController enemy)
     {
