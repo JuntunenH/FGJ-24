@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://6l1xiy8ocr3t"]
+[gd_scene load_steps=7 format=3 uid="uid://6l1xiy8ocr3t"]
 
 [ext_resource type="StyleBox" uid="uid://c1onyctil340s" path="res://Prefabs/UI/MenuNormalButton.tres" id="1_6xghf"]
 [ext_resource type="Script" path="res://Scripts/UI/EndGameScreen.cs" id="1_fjw3j"]
 [ext_resource type="StyleBox" uid="uid://6ww6oo8vu08m" path="res://Prefabs/UI/MenuButtonHover.tres" id="2_0ebp3"]
+[ext_resource type="FontFile" uid="uid://dpbj42ar6m2hw" path="res://Prefabs/UI/Font/Carnevalee Freakshow.ttf" id="2_mwmcg"]
 [ext_resource type="Texture2D" uid="uid://cr3ftll65l74l" path="res://Textures/Banana.png" id="2_snpka"]
 [ext_resource type="StyleBox" uid="uid://cvlscmleib057" path="res://Prefabs/UI/MenuButtonPressed.tres" id="3_2g8rg"]
 
@@ -16,63 +17,71 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_fjw3j")
-scoreText = NodePath("MarginContainer/VBoxContainer/HBoxContainer/ScoreText")
+scoreText = NodePath("CenterContainer/MarginContainer/VBoxContainer/HBoxContainer/ScoreText")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 2
-offset_left = 394.0
-offset_top = 256.0
-offset_right = 886.0
-offset_bottom = 463.0
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0.494118, 0.835294, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.831373, 0.223529, 1, 1)
+theme_override_fonts/font = ExtResource("2_mwmcg")
 theme_override_font_sizes/font_size = 68
 text = "The Last Laugh"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 alignment = 1
 
-[node name="ScoreText" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="ScoreText" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_mwmcg")
 theme_override_font_sizes/font_size = 24
 text = "Score Here"
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("2_snpka")
 expand_mode = 2
 
-[node name="Main Menu" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Main Menu" type="Button" parent="CenterContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_mwmcg")
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = ExtResource("1_6xghf")
 theme_override_styles/hover = ExtResource("2_0ebp3")
 theme_override_styles/pressed = ExtResource("3_2g8rg")
 text = "Main Menu"
 
-[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Quit" type="Button" parent="CenterContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_mwmcg")
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = ExtResource("1_6xghf")
 theme_override_styles/hover = ExtResource("2_0ebp3")
 theme_override_styles/pressed = ExtResource("3_2g8rg")
 text = "Quit"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Main Menu" to="." method="GoMainMenu"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="Quit"]
+[connection signal="pressed" from="CenterContainer/MarginContainer/VBoxContainer/Main Menu" to="." method="GoMainMenu"]
+[connection signal="pressed" from="CenterContainer/MarginContainer/VBoxContainer/Quit" to="." method="Quit"]
