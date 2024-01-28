@@ -44,3 +44,4 @@ stream = ExtResource("8_ox0ih")
 autoplay = true
 
 [connection signal="GameOver" from="PlayerCharacter" to="CanvasLayer/EndGameScreen" method="ShowScreen"]
+[connection signal="MoneyGained" from="PlayerCharacter" to="CanvasLayer/EndGameScreen" method="UpdateScore"]
