@@ -20,6 +20,11 @@ config/windows_native_icon="res://Textures/clown_ico.ico"
 
 GameManager="*res://Scripts/GameManager.cs"
 
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+
 [dotnet]
 
 project/assembly_name="The last laugh"

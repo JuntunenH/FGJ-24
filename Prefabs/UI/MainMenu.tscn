@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=3 uid="uid://cgawkfdjrfm86"]
+
+[ext_resource type="Script" path="res://Scripts/UI/MainMenu.cs" id="1_0pr6j"]
+[ext_resource type="StyleBox" uid="uid://c1onyctil340s" path="res://Prefabs/UI/MenuNormalButton.tres" id="2_o7w5r"]
+[ext_resource type="StyleBox" uid="uid://6ww6oo8vu08m" path="res://Prefabs/UI/MenuButtonHover.tres" id="3_eepmb"]
+[ext_resource type="StyleBox" uid="uid://cvlscmleib057" path="res://Prefabs/UI/MenuButtonPressed.tres" id="4_l2io7"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_0pr6j")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 300.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "The Last Laugh"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonNewGame" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("2_o7w5r")
+theme_override_styles/hover = ExtResource("3_eepmb")
+theme_override_styles/pressed = ExtResource("4_l2io7")
+text = "New game"
+
+[node name="ButtonCredits" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("2_o7w5r")
+theme_override_styles/hover = ExtResource("3_eepmb")
+theme_override_styles/pressed = ExtResource("4_l2io7")
+text = "Credits
+"
+
+[node name="ButtonQuitGame" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("2_o7w5r")
+theme_override_styles/hover = ExtResource("3_eepmb")
+theme_override_styles/pressed = ExtResource("4_l2io7")
+text = "Quit game
+"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonNewGame" to="." method="_OnButtonNewGamePressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonCredits" to="." method="_OnButtonCreditsPressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonQuitGame" to="." method="_OnButtonQuitGamePressed"]
