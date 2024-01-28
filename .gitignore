@@ -17,3 +17,7 @@ mono_crash.*.json
 #VScode / Visual Studio
 .vscode/
 .vs/
+
+# Build folder
+[Bb]uild/
+
