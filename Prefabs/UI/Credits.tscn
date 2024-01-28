@@ -1,0 +1,70 @@
+[gd_scene load_steps=6 format=3 uid="uid://cgtk3bdxmfkbc"]
+
+[ext_resource type="Script" path="res://Prefabs/UI/Credits.cs" id="1_ep068"]
+[ext_resource type="FontFile" uid="uid://dpbj42ar6m2hw" path="res://Prefabs/UI/Font/Carnevalee Freakshow.ttf" id="1_lpyxr"]
+[ext_resource type="StyleBox" uid="uid://c1onyctil340s" path="res://Prefabs/UI/MenuNormalButton.tres" id="2_vq73k"]
+[ext_resource type="StyleBox" uid="uid://6ww6oo8vu08m" path="res://Prefabs/UI/MenuButtonHover.tres" id="3_6j8r8"]
+[ext_resource type="StyleBox" uid="uid://cvlscmleib057" path="res://Prefabs/UI/MenuButtonPressed.tres" id="4_pwm5o"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ep068")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -330.5
+offset_top = -262.0
+offset_right = 330.5
+offset_bottom = 262.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.831373, 0.223529, 1, 1)
+theme_override_fonts/font = ExtResource("1_lpyxr")
+theme_override_font_sizes/font_size = 64
+text = "Credits"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Credits" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.831373, 0.223529, 1, 1)
+theme_override_fonts/font = ExtResource("1_lpyxr")
+theme_override_font_sizes/font_size = 48
+text = "Game
+Design / Programming / ART
+Henri Juntunen
+Ossi Ruhanen
+Niko Kinnunen"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_lpyxr")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("2_vq73k")
+theme_override_styles/hover = ExtResource("3_6j8r8")
+theme_override_styles/pressed = ExtResource("4_pwm5o")
+text = "Back
+"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Button" to="." method="_OnBackButtonPressed"]

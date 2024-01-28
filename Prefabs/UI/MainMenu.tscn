@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cgawkfdjrfm86"]
+[gd_scene load_steps=7 format=3 uid="uid://cgawkfdjrfm86"]
 
 [ext_resource type="Script" path="res://Scripts/UI/MainMenu.cs" id="1_0pr6j"]
 [ext_resource type="StyleBox" uid="uid://c1onyctil340s" path="res://Prefabs/UI/MenuNormalButton.tres" id="2_o7w5r"]
 [ext_resource type="FontFile" uid="uid://dpbj42ar6m2hw" path="res://Prefabs/UI/Font/Carnevalee Freakshow.ttf" id="2_olgo6"]
 [ext_resource type="StyleBox" uid="uid://6ww6oo8vu08m" path="res://Prefabs/UI/MenuButtonHover.tres" id="3_eepmb"]
 [ext_resource type="StyleBox" uid="uid://cvlscmleib057" path="res://Prefabs/UI/MenuButtonPressed.tres" id="4_l2io7"]
+[ext_resource type="PackedScene" uid="uid://cgtk3bdxmfkbc" path="res://Prefabs/UI/Credits.tscn" id="6_jhqpd"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -73,6 +74,10 @@ theme_override_styles/hover = ExtResource("3_eepmb")
 theme_override_styles/pressed = ExtResource("4_l2io7")
 text = "Quit game
 "
+
+[node name="Control" parent="." instance=ExtResource("6_jhqpd")]
+visible = false
+layout_mode = 1
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonNewGame" to="." method="_OnButtonNewGamePressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonCredits" to="." method="_OnButtonCreditsPressed"]
