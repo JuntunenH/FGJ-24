@@ -9,8 +9,9 @@ public partial class money : Area2D
 	public override void _Ready()
 	{
 		_player = GetNode<CharacterController>("/root/World/PlayerCharacter");
-		_sound = GetNode<AudioStreamPlayer2D>("AudioStreamPlayer2D");
-		_sound.Play();
+		_sound = GetNode<AudioStreamPlayer2D>("/root/World/AudioStreamPlayer2D");
+		_sound.Stream = GD.Load<AudioStream>("res://Audio/BananaSound.mp3");
+
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -21,6 +22,7 @@ public partial class money : Area2D
 	{
 			if(body.IsInGroup("Player"))
 			{
+				_sound.Play();
 				_player.money +=1;
 				GD.Print("Player money: ", _player.money);
 				QueueFree();

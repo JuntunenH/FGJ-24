@@ -25,11 +25,14 @@ public partial class EnemyController : CharacterBody2D
 
 	private Timer _attackCooldown;
 	private CharacterController _player;
+	private AudioStreamPlayer2D _sound;
 	[Signal] public delegate void EnemyDeathEventHandler(PackedScene pickup, Vector2 position, EnemyController enemy);
 
 	public override void _Ready()
 	{
 		_player = GetNode<CharacterController>("/root/World/PlayerCharacter");
+		_sound = GetNode<AudioStreamPlayer2D>("/root/World/AudioStreamPlayer2D2");
+		_sound.Stream = GD.Load<AudioStream>("res://Audio/cartoon-splat-6086.mp3");
 	}
 	public override void _PhysicsProcess(double delta)
 	{
@@ -44,6 +47,7 @@ public partial class EnemyController : CharacterBody2D
 		Hitpoints-= amount;
 		if(Hitpoints<=0)
 		{
+			_sound.Play();
 			CallDeferred("_death");
 		}
 	}
