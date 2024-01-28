@@ -4,4 +4,4 @@
 
 [resource]
 texture = ExtResource("1_7b5xq")
-modulate_color = Color(0.443137, 0.443137, 0.443137, 1)
+modulate_color = Color(0.956863, 0.431373, 1, 1)
