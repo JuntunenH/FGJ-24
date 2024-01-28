@@ -1,0 +1,33 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://dpbj42ar6m2hw"
+path="res://.godot/imported/Carnevalee Freakshow.ttf-457e7bfb67a4c67f390bd966d146c4af.fontdata"
+
+[deps]
+
+source_file="res://Prefabs/UI/Font/Carnevalee Freakshow.ttf"
+dest_files=["res://.godot/imported/Carnevalee Freakshow.ttf-457e7bfb67a4c67f390bd966d146c4af.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=1
+generate_mipmaps=false
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=false
+hinting=1
+subpixel_positioning=1
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=true
+preload=[]
+language_support={}
+script_support={}
+opentype_features={}

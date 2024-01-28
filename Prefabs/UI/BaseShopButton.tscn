@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dwvch0r48yv8d"]
+[gd_scene load_steps=7 format=3 uid="uid://dwvch0r48yv8d"]
 
 [ext_resource type="Texture2D" uid="uid://bcigjkcs0747y" path="res://Textures/UI/button64x64.png" id="1_4avnu"]
 [ext_resource type="Script" path="res://Scripts/UI/BaseShopButton.cs" id="2_2y2kq"]
+[ext_resource type="FontFile" uid="uid://dpbj42ar6m2hw" path="res://Prefabs/UI/Font/Carnevalee Freakshow.ttf" id="3_g2jac"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vpo2k"]
 texture = ExtResource("1_4avnu")
@@ -36,6 +37,7 @@ offset_bottom = -11.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g2jac")
 text = "(InsertText)"
 horizontal_alignment = 1
 vertical_alignment = 1
