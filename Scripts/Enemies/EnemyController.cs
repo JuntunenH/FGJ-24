@@ -1,7 +1,5 @@
 using Godot;
 using System;
-using System.Diagnostics;
-using System.Security.Cryptography.X509Certificates;
 
 public enum EnemyVariant
 {
@@ -27,6 +25,7 @@ public partial class EnemyController : CharacterBody2D
 
 	private Timer _attackCooldown;
 	private CharacterController _player;
+	[Signal] public delegate void EnemyDeathEventHandler(PackedScene pickup, Vector2 position, EnemyController enemy);
 
 	public override void _Ready()
 	{
@@ -45,16 +44,17 @@ public partial class EnemyController : CharacterBody2D
 		Hitpoints-= amount;
 		if(Hitpoints<=0)
 		{
-			_death();
+			CallDeferred("_death");
 		}
 	}
 	private void _death()
 	{
+		EmitSignal(SignalName.EnemyDeath, Pickup, GlobalPosition, this);
 		// This instantiate causes issues here
-		Node2D lootNode = (Node2D)Pickup.Instantiate();
-		lootNode.Position = GlobalPosition;
+		//Node2D lootNode = (Node2D)Pickup.Instantiate();
+		//lootNode.Position = GlobalPosition;
 		// Add the loot item to the scene
-		GetParent().AddChild(lootNode);
+		//GetParent().AddChild(lootNode);
 		QueueFree();
 	}
 }

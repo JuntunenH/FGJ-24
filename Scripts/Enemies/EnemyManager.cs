@@ -57,6 +57,7 @@ public partial class EnemyManager : Node
         // 2 minutes = same move as player
         instance.MovementSpeed += instance.MovementSpeed * ((int)GameTime/20);
         instance.Position=GetRandomPosAroundPlayer(SpawnRange);
+        instance.EnemyDeath += HandleLoot;
         AddChild(instance);
     }
     public Vector2 GetRandomPosAroundPlayer(int SpawnRange) => PlayerPos + SpawnRange * new Vector2(
@@ -70,4 +71,12 @@ public partial class EnemyManager : Node
             SpawnEnemy(EnemyVariant.Melee);
     }
 
+    private void HandleLoot(PackedScene lootDrop, Vector2 lootPosition, EnemyController enemy)
+    {
+        enemy.EnemyDeath -= HandleLoot;
+        Node2D lootNode = (Node2D)lootDrop.Instantiate();
+		lootNode.Position = lootPosition;
+		// Add the loot item to the scene
+		AddChild(lootNode);
+    }
 }

@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dvlfsoirfk23h"]
+[gd_scene load_steps=5 format=3 uid="uid://dvlfsoirfk23h"]
 
 [ext_resource type="PackedScene" uid="uid://bd2vppt8tku2c" path="res://GameMap.tscn" id="1_tumyh"]
 [ext_resource type="PackedScene" uid="uid://b37hfbcace451" path="res://Prefabs/Player.tscn" id="2_0olax"]
 [ext_resource type="PackedScene" uid="uid://c1ahkd45fxpl4" path="res://Prefabs/GameCamera.tscn" id="3_fctxj"]
-[ext_resource type="PackedScene" uid="uid://bs417wacbf8y3" path="res://Prefabs/EnemyMeleeMime.tscn" id="4_8sf0d"]
 [ext_resource type="Script" path="res://Scripts/Enemies/EnemyManager.cs" id="5_n1tx5"]
 
 [node name="World" type="Node2D"]
@@ -16,9 +15,6 @@ z_index = -1
 [node name="Camera2D" parent="." node_paths=PackedStringArray("m_cameraTarget") instance=ExtResource("3_fctxj")]
 zoom = Vector2(0.8, 0.8)
 m_cameraTarget = NodePath("../PlayerCharacter")
-
-[node name="Enemy" parent="." instance=ExtResource("4_8sf0d")]
-position = Vector2(522, -9)
 
 [node name="EnemySpawner" type="Node2D" parent="."]
 script = ExtResource("5_n1tx5")
