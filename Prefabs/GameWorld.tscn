@@ -29,3 +29,6 @@ one_shot = true
 visible = false
 
 [node name="EndGameScreen" parent="CanvasLayer" instance=ExtResource("5_82s0e")]
+visible = false
+
+[connection signal="GameOver" from="PlayerCharacter" to="CanvasLayer/EndGameScreen" method="ShowScreen"]

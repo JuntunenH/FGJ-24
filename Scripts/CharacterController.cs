@@ -53,7 +53,6 @@ public partial class CharacterController : CharacterBody2D
 		gameOver = true;
 		m_sprite.FlipV = true;
 		EmitSignal(SignalName.GameOver);
-		GetTree().Paused = true;
 	}
     public override void _PhysicsProcess(double delta)
     {
