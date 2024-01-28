@@ -30,14 +30,7 @@ public partial class ClownCar : RigidBody2D
 
     public override void _PhysicsProcess(double delta)
     {
-        foreach (var collider in GetCollidingBodies())
-        {
-            if (collider.IsInGroup("Player"))
-            {
-                GD.Print("Colliding with player!");
-                //var player = collider.GetNode<CharacterBody2D>("PlayerCharacter");
-            }                    
-        }
+        
         if (LinearVelocity.X > -4.0f && LinearVelocity.X < 4.0f)
             _isCarStopped = true;
         if (_isCarStopped)
